@@ -4,17 +4,22 @@
     <list default="true" id="60b5e79b-62d8-4b74-9800-66ea8d151f5b" name="Default" comment="" />
     <ignored path="API.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/__init__.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372483652878" ignored="false" />
+    <file path="/__init__.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372510393179" ignored="false" />
     <file path="/views.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372492278947" ignored="false" />
     <file path="$PROJECT_DIR$/../../cornice_try/messaging/messaging/views.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372471000202" ignored="false" />
     <file path="/account.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372491405448" ignored="false" />
     <file path="$PROJECT_DIR$/../../admin/Admin/admin/mapping/account.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372491406327" ignored="false" />
-    <file path="/api.ini" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372483692389" ignored="false" />
+    <file path="/api.ini" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372510510518" ignored="false" />
     <file path="/user.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372491065903" ignored="false" />
     <file path="/fragment.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372490680433" ignored="false" />
     <file path="$PROJECT_DIR$/../../admin/Admin/admin/views.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372492278947" ignored="false" />
     <file path="/development.ini" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372492223072" ignored="false" />
     <file path="$PROJECT_DIR$/../../admin/Admin/development.ini" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372494115140" ignored="false" />
+    <file path="/base.mak" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372509307581" ignored="false" />
+    <file path="/login.mak" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372510693419" ignored="false" />
+    <file path="/display.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372509915725" ignored="false" />
+    <file path="/api.py" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372510315198" ignored="false" />
+    <file path="/a.dummy" changelist="60b5e79b-62d8-4b74-9800-66ea8d151f5b" time="1372510499579" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,25 +42,63 @@
       <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="34" selection-start="930" selection-end="930" vertical-scroll-proportion="0.0">
+            <state line="25" column="17" selection-start="759" selection-end="759" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api.ini" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="display.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/views/display.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="24" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="api.ini" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="11" selection-start="428" selection-end="428" vertical-scroll-proportion="0.17094018">
+            <state line="11" column="22" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="restapi.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/views/restapi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="12" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#40#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.mak" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/templates/base.mak">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="122" column="0" selection-start="5596" selection-end="5672" vertical-scroll-proportion="-16.291666">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/views.py">
+        <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/pyramid/config/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="21" selection-start="1571" selection-end="1571" vertical-scroll-proportion="0.0">
+            <state line="395" column="0" selection-start="13905" selection-end="13905" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.mak" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/templates/login.mak">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="72" selection-start="348" selection-end="348" vertical-scroll-proportion="-1.2452229">
               <folding />
             </state>
           </provider>
@@ -79,46 +122,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/cornice/service.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="491" column="0" selection-start="18116" selection-end="18116" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/pyramid/config/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="588" column="0" selection-start="20949" selection-end="20949" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="router.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/pyramid/router.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="226" column="0" selection-start="7898" selection-end="7898" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tweens.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/pyramid/tweens.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="0" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="user.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/mapping/user.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="160" selection-end="408" vertical-scroll-proportion="0.0">
+            <state line="15" column="0" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -135,10 +142,17 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/api/mapping/account.py" />
-        <option value="$PROJECT_DIR$/api/__init__.py" />
         <option value="$PROJECT_DIR$/api/mapping/user.py" />
+        <option value="$PROJECT_DIR$/static/adjust.css" />
+        <option value="$PROJECT_DIR$/api/templates/base.mak" />
+        <option value="$PROJECT_DIR$/api/templates/index.html" />
+        <option value="$PROJECT_DIR$/api/views/display.py" />
+        <option value="$PROJECT_DIR$/api/views/api.py" />
         <option value="$PROJECT_DIR$/api/views.py" />
+        <option value="$PROJECT_DIR$/api/views/views.py" />
+        <option value="$PROJECT_DIR$/api/__init__.py" />
         <option value="$PROJECT_DIR$/api.ini" />
+        <option value="$PROJECT_DIR$/api/templates/login.mak" />
       </list>
     </option>
   </component>
@@ -417,7 +431,91 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mapping" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -433,6 +531,7 @@
     <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -443,6 +542,14 @@
     <option name="myDjangoConsoleState">
       <PyConsoleSettings />
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/views" />
+      <recent name="$PROJECT_DIR$/api" />
+      <recent name="$PROJECT_DIR$/api/mapping/views" />
+      <recent name="$PROJECT_DIR$/api/mapping/api" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.cornice">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -471,7 +578,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
+      <module name="API" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
@@ -505,6 +612,13 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="false" name="cornice" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -519,7 +633,7 @@
       <module name="API" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../bin/pserve" />
-      <option name="PARAMETERS" value="api.ini workers=2" />
+      <option name="PARAMETERS" value="api.ini --reload" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
@@ -558,22 +672,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="719" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32888147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2617504" sideWeight="0.67111856" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3974359" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32888147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32888147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -649,36 +763,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/cornice/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/cornice/cors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/cornice/errors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/cornice/schemas.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/mapping/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="0" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/pyramid/config/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="588" column="0" selection-start="20949" selection-end="20949" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -709,20 +796,6 @@
         <state line="302" column="0" selection-start="11324" selection-end="11324" vertical-scroll-proportion="0.048231512" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/mapping/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="160" selection-end="408" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="21" selection-start="1571" selection-end="1571" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/pyramid/security.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="185" column="24" selection-start="7439" selection-end="7439" vertical-scroll-proportion="0.0">
@@ -737,16 +810,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/__init__.py">
+    <entry file="file://$PROJECT_DIR$/api/templates/base.mak">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="34" selection-start="930" selection-end="930" vertical-scroll-proportion="0.0">
+        <state line="122" column="0" selection-start="5596" selection-end="5672" vertical-scroll-proportion="-16.291666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/mapping/user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/views/restapi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="12" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#40#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lib/python2.7/site-packages/pyramid/config/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="395" column="0" selection-start="13905" selection-end="13905" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="11" selection-start="428" selection-end="428" vertical-scroll-proportion="0.17094018">
+        <state line="11" column="22" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="17" selection-start="759" selection-end="759" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/views/display.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="24" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/templates/login.mak">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="72" selection-start="348" selection-end="348" vertical-scroll-proportion="-1.2452229">
           <folding />
         </state>
       </provider>

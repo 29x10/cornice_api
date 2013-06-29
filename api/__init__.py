@@ -43,5 +43,7 @@ def main(global_config, **settings):
     config.registry.settings['CouchDB.server'] = db_server
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.include("cornice")
-    config.scan("api.views")
+    config.add_route('home', '/')
+    config.scan("api.views.restapi")
+    config.scan("api.views.display")
     return config.make_wsgi_app()

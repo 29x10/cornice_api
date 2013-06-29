@@ -1,0 +1,28 @@
+.glyphicon {
+    color: white;
+}
+
+.navbar-toggle {
+    position: relative;
+    float: right;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-collapse.collapse .navbar-form {
+        display: table;
+        float: right;
+    }
+
+    .nav-bar .navbar-nav {
+        padding-left: 10px;
+    }
+}
+
+.bs-masthead .alert.alert-block {
+    margin: 0px 15px;
+    padding: 8px 12px;
+}
+
+.bs-masthead .alert.alert-block > p {
+    font-size: 14px;
+}
