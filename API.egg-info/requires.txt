@@ -1,6 +1,0 @@
-cornice
-gunicorn
-CouchDB
-cryptacular
-pyes
-PasteScript
