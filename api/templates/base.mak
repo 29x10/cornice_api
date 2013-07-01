@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="${request.static_url('api:static/favicon.ico')}" />
     <!-- Bootstrap -->
     <link href="${request.static_url('api:static/bootstrap/css/bootstrap.css')}" rel="stylesheet">
+    <link href="${request.static_url('api:static/icons/css/bootstrap-glyphicons.css')}" rel="stylesheet">
     <link href="${request.static_url('api:static/docs.css')}" rel="stylesheet">
     <link href="${request.static_url('api:static/adjust.css')}" rel="stylesheet">
 </head>
@@ -23,18 +24,19 @@
 
         <a class="navbar-brand" href="/">立仁泰华</a>
         <div class="nav-collapse nav-bar collapse">
-            <ul class="nav navbar-nav pull-right">
-            %if user_login:
-            <li><a href="#">你好，${user_login}</a></li>
-            <li><a href="#" id="logout">登出</a></li>
-            %else:
-            <li><a href="#login" data-toggle="modal">登陆</a></li>
-            <li><a href="#signup" data-toggle="modal">注册</a></li>
-            %endif
+            <ul class="nav navbar-nav">
+
+                    %if user_login:
+                        <li><a href="#">你好，${user_login}</a></li>
+                        <li><a href="#" id="logout">登出</a></li>
+                    %else:
+                        <li><a href="#login" data-toggle="modal">登陆</a></li>
+                        <li><a href="#signup" data-toggle="modal">注册</a></li>
+                    %endif
 
             </ul>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-book"></span> 产品选型</a></li>
             </ul>
 
