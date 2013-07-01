@@ -9,8 +9,8 @@ from webob.response import Response
 from api.mapping.user import User, manager
 
 
-user_create = Service(name='create_user', path='/users/create', description="create a user")
-user_login_logout = Service(name='user_login_logout', path='/users', description="user login or logout")
+user_create = Service(name='create_user', path='/users/create', description="create a user", cors_origins=('*',))
+user_login_logout = Service(name='user_login_logout', path='/users', description="user login or logout", cors_origins=('*',))
 
 
 #

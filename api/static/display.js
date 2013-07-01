@@ -24,7 +24,9 @@ $('#login-submit').click(function (event) {
     else {
         $.ajax({
             type: "POST",
-            url: "/users",
+            url: "http://seekpro.in/users",
+            crossDomain: true,
+            dataType: 'json',
             data: { username: username[0].value, password: password[0].value }
         }).done(function (msg) {
                 if (msg.status && msg.status == "error") {
