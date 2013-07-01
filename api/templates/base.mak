@@ -64,13 +64,13 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
-                    <div class="row">
+                    <div class="login-row row">
                         <label class="col-lg-2 control-label" for="usernamel">用户名</label>
                         <div class="col-lg-10">
                             <input class="input-with-feedback" type="text" id="usernamel" placeholder="用户名">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="login-row row">
                         <label class="col-lg-2 control-label" for="passwordl">密码</label>
                         <div class="col-lg-10">
                             <input class="input-with-feedback" type="password" id="passwordl" placeholder="密码">
@@ -95,22 +95,22 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
-                    <div class="row">
+                    <div class="signup-row row">
                         <label class="col-lg-2 control-label" for="usernames">用户名</label>
                         <div class="col-lg-10">
-                            <input type="text" id="username" placeholder="用户名">
+                            <input class="input-with-feedback" type="text" id="username" placeholder="用户名">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="signup-row row">
                         <label class="col-lg-2 control-label" for="password1s">密码</label>
                         <div class="col-lg-10">
-                            <input type="password" id="password1s" placeholder="密码">
+                            <input class="input-with-feedback" type="password" id="password1s" placeholder="密码">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="signup-row row">
                         <label class="col-lg-2 control-label" for="password2s">确认密码</label>
                         <div class="col-lg-10">
-                            <input type="password" id="password2s" placeholder="确认密码">
+                            <input class="input-with-feedback" type="password" id="password2s" placeholder="确认密码">
                         </div>
                     </div>
                 </form>

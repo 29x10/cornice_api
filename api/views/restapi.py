@@ -5,10 +5,9 @@ import json
 from cornice import Service
 from pyramid.security import remember, authenticated_userid
 from webob import exc
-from webob.cookies import RequestCookies
 from webob.response import Response
 from api.mapping.user import User, manager
-from urllib import quote
+
 
 user_create = Service(name='create_user', path='/users/create', description="create a user")
 user_login_logout = Service(name='user_login_logout', path='/users', description="user login or logout")
@@ -97,7 +96,7 @@ def login_validate(request):
                 cookie_value = headers[0][1].split(';')[0][:-1][10:]
                 user_id = user.rows[0].value['_id']
                 user = db[user_id]
-                user.token = cookie_value
+                user['token'] = cookie_value
                 db[user_id] = user
                 request.validated['user'] = user
             else:
@@ -122,7 +121,7 @@ def create_user(request):
 @user_login_logout.post(validators=login_validate)
 def login(request):
     user = request.validated['user']
-    cookie_value = user.token
+    cookie_value = user['token']
     return {'token': cookie_value}
 
 @user_login_logout.get(validators=valid_token)
