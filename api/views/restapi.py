@@ -3,13 +3,15 @@
 """
 import json
 from cornice import Service
-from pyramid.security import remember
+from pyramid.security import remember, authenticated_userid
 from webob import exc
+from webob.cookies import RequestCookies
 from webob.response import Response
-from api.mapping.user import User
+from api.mapping.user import User, manager
+from urllib import quote
 
-
-users = Service(name='users', path='/users', description="account management")
+user_create = Service(name='create_user', path='/users/create', description="create a user")
+user_login_logout = Service(name='user_login_logout', path='/users', description="user login or logout")
 
 
 #
@@ -25,10 +27,37 @@ class _401(exc.HTTPError):
 
 
 def valid_token(request):
-    pass
+    token = request.params.get('token', '')
+    cookie_value = 'auth_tkt = %s' % token
+    request.headers['Cookie'] = str(cookie_value)
+
+    user_id = authenticated_userid(request)
+
+    if user_id is None:
+        raise _401(msg=u"token cannot parse to a valid username")
+
+    settings = request.registry.settings
+    db = settings['CouchDB.server'][settings['CouchDB.db_name']]
+
+    map_fun = User.by_token.map_fun
+    # User.by_token.sync(db)
+    # token_search = quote(str(token))
+    result = db.query(map_fun, key=token)
+    if len(result):
+        user = result.rows[0].value
+        user_name = user['username']
+        if user_name != user_id:
+            raise _401(msg=u'token invalid')
+        else:
+            request.validated['user'] = user
+
+    else:
+        raise _401(msg=u'token expired')
 
 
-def unique(request):
+
+
+def create_validate(request):
     username = request.params.get('username', '')
     password = request.params.get('password', '')
     password_confirm = request.params.get('password_confirm', '')
@@ -50,7 +79,34 @@ def unique(request):
             request.validated['user'] = user
 
 
-@users.post(validators=unique)
+def login_validate(request):
+    username = request.params.get('username', '')
+    password = request.params.get('password', '')
+    if not (username and password):
+        request.errors.add('login', 'not_none', u'用户名或者密码不能为空')
+    else:
+        settings = request.registry.settings
+        db = settings['CouchDB.server'][settings['CouchDB.db_name']]
+
+        map_fun = User.by_user.map_fun
+        user = db.query(map_fun, key=username)
+        if len(user):
+            hashed_password = user.rows[0].value['password']
+            if manager.check(hashed_password, password):
+                headers = remember(request, username)
+                cookie_value = headers[0][1].split(';')[0][:-1][10:]
+                user_id = user.rows[0].value['_id']
+                user = db[user_id]
+                user.token = cookie_value
+                db[user_id] = user
+                request.validated['user'] = user
+            else:
+                request.errors.add('login', 'password_not_match', u'密码不正确')
+        else:
+            request.errors.add('login', 'username_not_exist', u'用户不存在')
+
+
+@user_create.post(validators=create_validate)
 def create_user(request):
     user = request.validated['user']
     headers = remember(request, user.username)
@@ -60,4 +116,16 @@ def create_user(request):
     settings = request.registry.settings
     db = settings['CouchDB.server'][settings['CouchDB.db_name']]
     user.store(db)
-    return {'auth_tkt': cookie_value}
+    return {'token': cookie_value}
+
+
+@user_login_logout.post(validators=login_validate)
+def login(request):
+    user = request.validated['user']
+    cookie_value = user.token
+    return {'token': cookie_value}
+
+@user_login_logout.get(validators=valid_token)
+def logout(request):
+    user = request.validated['user']
+    return {'username': user['username']}

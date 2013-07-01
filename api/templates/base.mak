@@ -13,23 +13,29 @@
 <body data-spy="scroll" data-target=".bs-sidebar">
 <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
     <div class="container">
-##        <div class="btn-group navbar-btn">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".nav-bar">
-                <span class="glyphicon glyphicon-list"></span>
-            </button>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".search-bar">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-##        </div>
-        <a class="navbar-brand" href="/">后台管理中心</a>
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".nav-bar">
+            <span class="glyphicon glyphicon-list"></span>
+        </button>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".search-bar">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
+
+        <a class="navbar-brand" href="/">立仁泰华</a>
         <div class="nav-collapse nav-bar collapse">
             <ul class="nav navbar-nav pull-right">
-                <li><a href="#">你好，${user_login}</a> </li>
-                <li><a href="/logout">登出</a></li>
+            %if user_login:
+            <li><a href="#">你好，${user_login}</a></li>
+            <li><a href="#" id="logout">登出</a></li>
+            %else:
+            <li><a href="#login" data-toggle="modal">登陆</a></li>
+            <li><a href="#signup" data-toggle="modal">注册</a></li>
+            %endif
 
             </ul>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> 后台</a></li>
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-book"></span> 产品选型</a></li>
             </ul>
 
         </div><!-- /.nav-collapse -->
@@ -59,13 +65,13 @@
                     <div class="row">
                         <label class="col-lg-2 control-label" for="usernamel">用户名</label>
                         <div class="col-lg-10">
-                            <input type="text" id="usernamel" placeholder="用户名">
+                            <input class="input-with-feedback" type="text" id="usernamel" placeholder="用户名">
                         </div>
                     </div>
                     <div class="row">
                         <label class="col-lg-2 control-label" for="passwordl">密码</label>
                         <div class="col-lg-10">
-                            <input type="password" id="passwordl" placeholder="密码">
+                            <input class="input-with-feedback" type="password" id="passwordl" placeholder="密码">
                         </div>
                     </div>
                 </form>
@@ -90,19 +96,19 @@
                     <div class="row">
                         <label class="col-lg-2 control-label" for="usernames">用户名</label>
                         <div class="col-lg-10">
-                            <input type="text" id="usernames" placeholder="用户名">
+                            <input type="text" id="username" placeholder="用户名">
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-lg-2 control-label" for="passwords1">密码</label>
+                        <label class="col-lg-2 control-label" for="password1s">密码</label>
                         <div class="col-lg-10">
-                            <input type="password" id="passwords1" placeholder="密码">
+                            <input type="password" id="password1s" placeholder="密码">
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-lg-2 control-label" for="passwords2">确认密码</label>
+                        <label class="col-lg-2 control-label" for="password2s">确认密码</label>
                         <div class="col-lg-10">
-                            <input type="password" id="passwords2" placeholder="确认密码">
+                            <input type="password" id="password2s" placeholder="确认密码">
                         </div>
                     </div>
                 </form>
@@ -121,5 +127,6 @@ ${self.body()}
 <script src="${request.static_url('api:static/bootstrap/js/bootstrap.min.js')}"></script>
 <script src="${request.static_url('api:static/application.js')}"></script>
 <script src="${request.static_url('api:static/jquery.cookie.js')}"></script>
+<script src="${request.static_url('api:static/display.js')}"></script>
 </body>
 </html>

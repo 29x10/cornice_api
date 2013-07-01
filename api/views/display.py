@@ -1,6 +1,7 @@
+from pyramid.security import authenticated_userid
 from pyramid.view import view_config
 
 
-@view_config(route_name='home', renderer='login.mak')
+@view_config(route_name='home', renderer='index.mak')
 def my_view(request):
-    return {'project': 'Admin'}
+    return {'user_login': authenticated_userid(request)}

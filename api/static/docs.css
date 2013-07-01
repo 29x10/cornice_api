@@ -320,7 +320,7 @@ body {
 .bs-example-type .table td {
   color: #999;
   vertical-align: middle;
-  border-color: ;
+  border-color: red;
 }
 .bs-example-type .table td,
 .bs-example-type .table th {

@@ -29,6 +29,13 @@ class User(Document):
             }
         }''')
 
+    by_token = ViewField('user', '''
+        function(doc) {
+            if (doc.db_type == 'user') {
+                emit(doc.token, doc);
+            }
+        }''')
+
     def __init__(self, username, password):
         Document.__init__(self)
         self.username = username

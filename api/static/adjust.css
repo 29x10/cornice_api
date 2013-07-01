@@ -26,3 +26,8 @@
 .bs-masthead .alert.alert-block > p {
     font-size: 14px;
 }
+
+.form-horizontal .alert {
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
