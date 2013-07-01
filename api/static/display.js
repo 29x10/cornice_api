@@ -29,40 +29,38 @@ $('#login-submit').click(function (event) {
             dataType: 'json',
             data: { username: username[0].value, password: password[0].value }
         }).done(function (msg) {
-                if (msg.status && msg.status == "error") {
-                    if (msg.errors) {
-                        msg.errors.forEach(function (error) {
-                            if (/not/g.test(error.name)) {
-                                non_pass = $('<div></div>').addClass("alert").text(error.description);
-                                password.after(non_pass);
-                                $(this).button('reset');
-                                user_p.addClass("has-error");
-                                pas_p.addClass("has-error");
-                            }
-                            if (/pass/g.test(error.name)) {
-                                non_pass = $('<div></div>').addClass("alert").text(error.description);
-                                password.after(non_pass);
-                                $(this).button('reset');
-                                pas_p.addClass("has-error");
-                            }
-                            if (/user/g.test(error.name)) {
-                                non_pass = $('<div></div>').addClass("alert").text(error.description);
-                                username.after(non_pass);
-                                $(this).button('reset');
-                                user_p.addClass("has-error");
-                            }
-                        });
-                    }
-                }
-                else if (msg.token){
+                if (msg.token){
                     $.cookie.raw = true;
                     $.cookie('auth_tkt', msg.token, { expires: 1, path: '/' });
                     $('#loginModal').modal('hide');
                     $('#login-submit').button('reset');
                     location.reload();
                 }
-                else {
-
+            }).fail(function (msg) {
+                if (msg.responseJSON.status && msg.responseJSON.status == "error") {
+                    if (msg.responseJSON.errors) {
+                        msg.responseJSON.errors.forEach(function (error) {
+                            if (/not_none/g.test(error.name)) {
+                                non_pass = $('<div></div>').addClass("alert").text(error.description);
+                                password.after(non_pass);
+                                $('#login-submit').button('reset');
+                                user_p.addClass("has-error");
+                                pas_p.addClass("has-error");
+                            }
+                            if (/password_not_match/g.test(error.name)) {
+                                non_pass = $('<div></div>').addClass("alert").text(error.description);
+                                password.after(non_pass);
+                                $('#login-submit').button('reset');
+                                pas_p.addClass("has-error");
+                            }
+                            if (/username_not_exist/g.test(error.name)) {
+                                non_pass = $('<div></div>').addClass("alert").text(error.description);
+                                username.after(non_pass);
+                                $('#login-submit').button('reset');
+                                user_p.addClass("has-error");
+                            }
+                        });
+                    }
                 }
             });
     }

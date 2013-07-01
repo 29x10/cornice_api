@@ -13,10 +13,6 @@
         float: right;
     }
 
-    .nav-bar .navbar-nav {
-        padding-left: 10px;
-    }
-
     .nav-collapse.nav-bar.collapse > ul:first-child {
         float: right;
     }

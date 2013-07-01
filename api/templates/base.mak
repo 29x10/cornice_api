@@ -27,8 +27,8 @@
             <ul class="nav navbar-nav">
 
                     %if user_login:
-                        <li><a href="#">你好，${user_login}</a></li>
-                        <li><a href="#" id="logout">登出</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${user_login}</a></li>
+                        <li><a href="#" id="logout"><span class="glyphicon glyphicon-eject"></span> 登出</a></li>
                     %else:
                         <li><a href="#login" data-toggle="modal">登陆</a></li>
                         <li><a href="#signup" data-toggle="modal">注册</a></li>
