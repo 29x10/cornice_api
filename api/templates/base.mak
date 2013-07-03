@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <%block name="title" />
+    <title>立仁泰华</title>
     <link rel="shortcut icon" href="${request.static_url('api:static/favicon.ico')}" />
     <!-- Bootstrap -->
     <link href="${request.static_url('api:static/bootstrap/css/bootstrap.css')}" rel="stylesheet">
@@ -98,7 +98,7 @@
                     <div class="signup-row row">
                         <label class="col-lg-2 control-label" for="usernames">用户名</label>
                         <div class="col-lg-10">
-                            <input class="input-with-feedback" type="text" id="username" placeholder="用户名">
+                            <input class="input-with-feedback" type="text" id="usernames" placeholder="用户名">
                         </div>
                     </div>
                     <div class="signup-row row">

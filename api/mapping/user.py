@@ -23,18 +23,7 @@ class User(Document):
     token = TextField()
 
     by_user = ViewField('user', '''
-        function(doc) {
-            if (doc.db_type == 'user') {
-                emit(doc.username, doc);
-            }
-        }''')
-
-    by_token = ViewField('user', '''
-        function(doc) {
-            if (doc.db_type == 'user') {
-                emit(doc.token, doc);
-            }
-        }''')
+        function(doc) {if (doc.db_type == 'user') {emit(doc.username, doc);}}''')
 
     def __init__(self, username, password):
         Document.__init__(self)
