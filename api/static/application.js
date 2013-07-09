@@ -22,10 +22,6 @@
         }
       })
     }, 100)
-
-    setTimeout(function () {
-      $('.bs-top').affix()
-    }, 100)
   })
 
 }(window.jQuery)

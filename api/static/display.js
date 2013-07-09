@@ -190,3 +190,20 @@ $('#signup-submit').click(function (event) {
             });
     }
 });
+
+$('#logout').click(function (event) {
+    event.preventDefault();
+    $.cookie.raw = true;
+    var token = $.cookie('auth_tkt');
+    $.ajax({
+        type: 'GET',
+        url: '/users?token=' + token,
+        dataType: 'json'
+    }).done(function (msg) {
+            $.removeCookie('auth_tkt');
+            location.reload();
+        }).fail(function (msg) {
+            $.removeCookie('auth_tkt');
+            location.reload();
+        });
+});

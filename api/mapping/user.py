@@ -1,3 +1,4 @@
+from couchdb.design import ViewDefinition
 from couchdb.mapping import Document, TextField, ViewField, ListField
 from cryptacular.bcrypt import BCRYPTPasswordManager
 
@@ -6,12 +7,13 @@ manager = BCRYPTPasswordManager()
 
 
 def groupfinder(user_id, request):
-    map_fun = User.by_user.map_fun
     db = request.db
-    result = db.query(map_fun, key=user_id)
+    result = db.view('_design/user/_view/by_user', key=user_id)
     groups = None
     if len(result):
         groups = result.rows[0].value.get('groups', None)
+        if not groups:
+            groups = None
     return groups
 
 
@@ -22,10 +24,16 @@ class User(Document):
     groups = ListField(TextField())
     token = TextField()
 
-    by_user = ViewField('user', '''
-        function(doc) {if (doc.db_type == 'user') {emit(doc.username, doc);}}''')
+
+    by_user = ViewDefinition('user', 'by_user', '''
+        function(doc) {
+            if (doc.db_type == 'user') {
+                emit(doc.username, doc);
+            }
+        }''')
+
 
     def __init__(self, username, password):
-        Document.__init__(self)
+        super(User, self).__init__()
         self.username = username
         self.password = manager.encode(password)

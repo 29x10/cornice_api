@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>立仁泰华</title>
+    <%block name="title" />
     <link rel="shortcut icon" href="${request.static_url('api:static/favicon.ico')}" />
     <!-- Bootstrap -->
     <link href="${request.static_url('api:static/bootstrap/css/bootstrap.css')}" rel="stylesheet">
     <link href="${request.static_url('api:static/icons/css/bootstrap-glyphicons.css')}" rel="stylesheet">
     <link href="${request.static_url('api:static/docs.css')}" rel="stylesheet">
     <link href="${request.static_url('api:static/adjust.css')}" rel="stylesheet">
+    <%block name="extra_css" />
 </head>
 <body data-spy="scroll" data-target=".bs-sidebar">
 <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
@@ -37,7 +38,7 @@
             </ul>
             <ul class="nav navbar-nav">
                 <li><a href="#"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-book"></span> 产品选型</a></li>
+                <li><a href="/lectotype"><span class="glyphicon glyphicon-book"></span> 产品选型</a></li>
             </ul>
 
         </div><!-- /.nav-collapse -->
@@ -130,5 +131,6 @@ ${self.body()}
 <script src="${request.static_url('api:static/application.js')}"></script>
 <script src="${request.static_url('api:static/jquery.cookie.js')}"></script>
 <script src="${request.static_url('api:static/display.js')}"></script>
+<%block name="extra_js" />
 </body>
 </html>

@@ -6,7 +6,8 @@ from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.config import Configurator
 from pyramid.events import subscriber, NewRequest, BeforeRender
-from pyramid.security import authenticated_userid, Allow
+from pyramid.security import authenticated_userid, Allow, Everyone
+from api.mapping.user import groupfinder
 
 
 def add_couchdb_to_request(event):
@@ -22,22 +23,16 @@ def add_couchdb_to_request(event):
         request.token = token
 
 
-@subscriber(BeforeRender)
-def context_processor(event):
-    event.rendering_val['user_login'] = authenticated_userid(event['request'])
-
-
 class RootFactory(object):
     __acl__ = [
-        (Allow, 'admin', 'view'),
-        (Allow, 'admin', 'edit')]
+        (Allow, Everyone, 'view')]
 
     def __init__(self, request):
         pass
 
 
 def main(global_config, **settings):
-    auth_token = AuthTktAuthenticationPolicy('what_makes_so_secret', hashalg='sha512')
+    auth_token = AuthTktAuthenticationPolicy('what_makes_so_secret', hashalg='sha512', callback=groupfinder)
     auth_permission = ACLAuthorizationPolicy()
     config = Configurator(settings=settings,
                           root_factory=RootFactory)
