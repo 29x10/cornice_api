@@ -11,18 +11,22 @@ class Product(Document):
     images = ListField(TextField)
 
 
-    by_brand = ViewDefinition('product', 'by_brand', '''
+    brand_list = ViewDefinition('product', 'brand_list', '''
         function(doc) {
             if (doc.db_type == 'product') {
                 emit(doc.brand, doc.category);
             }
         }''','''
-        function(keys, values, rereduce) {
-            var categories = []
+        function (keys, values, rereduce) {
+            var category_dict = {};
             for (var index in values) {
-                categories.push(values[index]);
+                category_dict[values[index]] = values[index];
             }
-            return categories;
+            var category = [];
+            for (var index in category_dict) {
+                category.push(index);
+            }
+            return category
         }''')
 
 

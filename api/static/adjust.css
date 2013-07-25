@@ -18,16 +18,16 @@
     }
 }
 
-.bs-masthead .alert.alert-block {
-    margin: 0px 15px;
-    padding: 8px 12px;
-}
-
-.bs-masthead .alert.alert-block > p {
-    font-size: 14px;
-}
-
 .form-horizontal .alert {
     margin-bottom: 0px;
     margin-top: 15px;
 }
+
+.modal {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+

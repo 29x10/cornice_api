@@ -21,7 +21,7 @@ class User(Document):
     db_type = TextField(default='user')
     username = TextField()
     password = TextField()
-    groups = ListField(TextField())
+    groups = ListField(TextField(), default=["client"])
     token = TextField()
 
 

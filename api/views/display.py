@@ -8,6 +8,6 @@ def my_view(request):
     return {'user_login': authenticated_userid(request)}
 
 
-@view_config(name='lectotype', renderer='lectotype.mak')
-def lectotype(request):
+@view_config(name='selection', renderer='selection.mak')
+def selection(request):
     return dict(user_login=authenticated_userid(request))
