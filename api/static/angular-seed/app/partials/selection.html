@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-success add-alert" ng-show="add2CartSuccess">添加成功</div>
+        <div class="alert alert-info add-alert" ng-show="cartItemExist">已添加</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="bs-sidebar affix">
+            <ul class="nav bs-sidenav">
+                <div style="padding: 0px 10px;">
+                    <input type="text" ng-model="bc" class="form-control" placeholder="查询品牌">
+
+                </div>
+                <p ng-show="bc" style="padding: 0px 20px;">过滤结果:</p>
+                <li ng-class="{active: $state.includes('index.brand') && $stateParams.brand_name == brand.key}"
+                    ng-repeat="brand in brands | filter: {key: bc}"
+                    ng-animate="'expand'">
+                    <a href="#/brand/{{brand.key}}">{{brand.key}}</a>
+                    <ul class="nav">
+                        <li ng-repeat="category in brand.value"><a href="#/brand/{{brand.key}}/category/{{category}}">{{category}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-9" ui-view ng-animate="{enter:'slide-reveal'}"></div>
+</div>

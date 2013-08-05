@@ -16,6 +16,16 @@
     .nav-collapse.nav-bar.collapse > ul:first-child {
         float: right;
     }
+
+    .add-alert {
+        left: 0px;
+        top: 50px;
+        width: 100%;
+        position: fixed;
+        padding-right: 15px;
+        z-index: 2000;
+        text-align: center;
+    }
 }
 
 .form-horizontal .alert {
@@ -23,11 +33,79 @@
     margin-top: 15px;
 }
 
-.modal {
+.collapse {
     display: block;
+    overflow: hidden;
+    -webkit-transition: height 0.35s ease;
+    -moz-transition: height 0.35s ease;
+    -o-transition: height 0.35s ease;
+    transition: height 0.35s ease;
 }
 
-.hide {
-    display: none;
+.slide-reveal {
+    -webkit-transition:0.5s linear all;
+    -moz-transition:0.5s linear all;
+    -o-transition:0.5s linear all;
+    transition:0.5s linear all;
+    position:relative;
+    opacity:0;
+    top:10px;
+}
+.slide-reveal.slide-reveal-active {
+    top:0;
+    opacity:1;
 }
 
+.expand-enter {
+    -webkit-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    -moz-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    -o-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+
+    opacity:0;
+    line-height:0;
+    height:0!important;
+}
+.expand-enter.expand-enter-active {
+    opacity:1;
+    line-height:20px;
+    height:20px!important;
+}
+
+.expand-leave {
+    -webkit-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    -moz-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    -o-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+
+    opacity:1;
+    height:20px;
+}
+.expand-leave.expand-leave-active {
+    opacity:0;
+    height:0;
+}
+
+
+.animate-enter {
+    -webkit-animation: enter_sequence 1s linear; /* Safari/Chrome */
+    -moz-animation: enter_sequence 1s linear; /* Firefox */
+    -o-animation: enter_sequence 1s linear; /* Opera */
+    animation: enter_sequence 1s linear; /* IE10+ and Future Browsers */
+}
+@-webkit-keyframes enter_sequence {
+    from { opacity:0; }
+    to { opacity:1; }
+}
+@-moz-keyframes enter_sequence {
+    from { opacity:0; }
+    to { opacity:1; }
+}
+@-o-keyframes enter_sequence {
+    from { opacity:0; }
+    to { opacity:1; }
+}
+@keyframes enter_sequence {
+    from { opacity:0; }
+    to { opacity:1; }
+}

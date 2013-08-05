@@ -26,7 +26,7 @@ setup(name='API',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
-    install_requires=['cornice', 'gunicorn', 'CouchDB', 'cryptacular', 'pyes', 'PasteScript'],
+    install_requires=['cornice', 'gunicorn', 'CouchDB', 'cryptacular', 'pyelasticsearch', 'PasteScript'],
     entry_points = """\
     [paste.app_factory]
     main = api:main

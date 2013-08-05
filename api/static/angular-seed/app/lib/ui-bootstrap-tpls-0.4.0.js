@@ -1037,9 +1037,11 @@ dialogModule.provider("$dialog", function(){
       };
 
       this.handleBackDropClick = function(e) {
-        self.close();
-        e.preventDefault();
-        self.$scope.$apply();
+          if (e.target == e.currentTarget) {
+              self.close();
+              e.preventDefault();
+              self.$scope.$apply();
+          }
       };
 
       this.handleLocationChange = function() {
@@ -1133,12 +1135,12 @@ dialogModule.provider("$dialog", function(){
 
     Dialog.prototype._bindEvents = function() {
       if(this.options.keyboard){ body.bind('keydown', this.handledEscapeKey); }
-      if(this.options.backdrop && this.options.backdropClick){ this.backdropEl.bind('click', this.handleBackDropClick); }
+      if(this.options.backdrop && this.options.backdropClick){ this.modalEl.bind('click', this.handleBackDropClick); }
     };
 
     Dialog.prototype._unbindEvents = function() {
       if(this.options.keyboard){ body.unbind('keydown', this.handledEscapeKey); }
-      if(this.options.backdrop && this.options.backdropClick){ this.backdropEl.unbind('click', this.handleBackDropClick); }
+      if(this.options.backdrop && this.options.backdropClick){ this.modalEl.unbind('click', this.handleBackDropClick); }
     };
 
     Dialog.prototype._onCloseComplete = function(result) {

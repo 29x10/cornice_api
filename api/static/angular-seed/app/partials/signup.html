@@ -1,0 +1,106 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="signupClose()">&times;</button>
+        <h4 class="modal-title">注册</h4>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" name="signupForm">
+            <div class="form-group"
+                 ng-class="{'has-error': (signupUserF && !(signupForm.signupUser.$valid)) || userExist}">
+                <label class="col-lg-2 control-label" for="signupUser">用户名</label>
+
+                <div class="col-lg-10">
+                    <input class="form-control" type="text" id="signupUser" name="signupUser" placeholder="用户名"
+                           autocomplete="off"
+                           ng-model="signup.user"
+                           ng-focus="signupUserF"
+                           ng-click="rmUE()"
+                           ng-minlength="6" ng-maxlength="30"
+                           ng-pattern="/^[A-Za-z][\w.-]*$/"
+                           required>
+
+                    <div class="alert" ng-show="signupUserF && signupForm.signupUser.$error.minlength">
+                        用户名不能少于6个字符
+                    </div>
+                    <div class="alert" ng-show="signupUserF && signupForm.signupUser.$error.maxlength">
+                        用户名不能多于30个字符
+                    </div>
+                    <div class="alert" ng-show="signupUserF && signupForm.signupUser.$error.required">
+                        用户名不能为空
+                    </div>
+                    <div class="alert" ng-show="signupUserF && signupForm.signupUser.$error.pattern">
+                        用户名只能以英文字母开头，其余为英文、数字、点、减号或者下划线
+                    </div>
+                    <div class="alert" ng-show="userExist">
+                        用户名已经存在
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': signupPsdF && !(signupForm.signupPsd.$valid)}">
+                <label class="col-lg-2 control-label" for="signupPsd">密码</label>
+
+                <div class="col-lg-10">
+                    <input class="form-control" type="password" id="signupPsd" name="signupPsd" placeholder="密码"
+                           autocomplete="off"
+                           ng-model="signup.password"
+                           ng-focus="signupPsdF"
+                           ng-minlength="6" ng-maxlength="30"
+                           ng-pattern="/^[\w\-\~\`\!\@\#\$\%\^\&\*\(\)\+\=\\\{\}\[\]\|\;\:\'\&quot;\,\.\/\<\>\?]+$/"
+                           required>
+
+                    <div class="alert" ng-show="signupPsdF && signupForm.signupPsd.$error.minlength">
+                        密码不能少于6个字符
+                    </div>
+                    <div class="alert" ng-show="signupPsdF && signupForm.signupPsd.$error.maxlength">
+                        密码不能多于30个字符
+                    </div>
+                    <div class="alert" ng-show="signupPsdF && signupForm.signupPsd.$error.required">
+                        密码不能为空
+                    </div>
+                    <div class="alert" ng-show="signupPsdF && signupForm.signupPsd.$error.pattern">
+                        密码包含非法字符
+                    </div>
+                </div>
+            </div>
+            <div class="form-group"
+                 ng-class="{'has-error': signupPsddF && (!(signupForm.signupPsdd.$valid) || (signup.password != signup.passwordConfirm))}">
+                <label class="col-lg-2 control-label" for="signupPsd1">确认密码</label>
+
+                <div class="col-lg-10">
+                    <input class="form-control" type="password" id="signupPsd1" name="signupPsdd" placeholder="确认密码"
+                           autocomplete="off"
+                           ng-model="signup.passwordConfirm"
+                           ng-focus="signupPsddF"
+                           ng-minlength="6" ng-maxlength="30"
+                           ng-pattern="/^[\w\-\~\`\!\@\#\$\%\^\&\*\(\)\+\=\\\{\}\[\]\|\;\:\'\&quot;\,\.\/\<\>\?]+$/"
+                           required>
+
+                    <div class="alert" ng-show="signupPsddF && signupForm.signupPsdd.$error.minlength">
+                        密码不能少于6个字符
+                    </div>
+                    <div class="alert" ng-show="signupPsddF && signupForm.signupPsdd.$error.maxlength">
+                        密码不能多于30个字符
+                    </div>
+                    <div class="alert" ng-show="signupPsddF && signupForm.signupPsdd.$error.required">
+                        密码不能为空
+                    </div>
+                    <div class="alert" ng-show="signupPsddF && signupForm.signupPsdd.$error.pattern">
+                        密码包含非法字符
+                    </div>
+                    <div class="alert" ng-show="signupPsddF && (signup.password != signup.passwordConfirm)">
+                        两次密码不一致
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="signupClose()">取消</button>
+        <button id="signup-submit" class="btn btn-primary" autocomplete="off"
+                ng-disabled="waitSign || !(signupForm.$valid) || signup.password != signup.passwordConfirm"
+                ng-click="signupSubmit()">
+            {{signupText}}
+        </button>
+    </div>
+</div>

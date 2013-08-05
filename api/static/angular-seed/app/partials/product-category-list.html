@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-lg-4" ng-repeat="product in products | filter: {value.category: $stateParams.category_name}">
+        <div class="thumbnail">
+            <img src="/static/1.jpg" alt="">
+            <div class="caption">
+                <h3>{{product.value.spec}}</h3>
+                <p>{{product.value.category}}</p>
+                <p>
+                    <button class="btn btn-primary" ng-click="add2Cart(product.value._id)">添加到购物车</button>
+                    <button class="btn btn-default" ng-click="clearCart()">清空购物车</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

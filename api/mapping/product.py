@@ -29,6 +29,13 @@ class Product(Document):
             return category
         }''')
 
+    product_list = ViewDefinition('product', 'product_list', '''
+        function(doc) {
+            if (doc.db_type == 'product') {
+                emit([doc.brand, doc.category], doc);
+            }
+        }''')
+
 
     def __init__(self, spec, brand, category, cover, images):
         super(Product, self).__init__()

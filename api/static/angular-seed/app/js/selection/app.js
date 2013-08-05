@@ -2,25 +2,41 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('select', ['ui.state', 'select.filters', 'select.services', 'select.directives', 'select.controllers']).
+angular.module('select', ['ui.bootstrap', 'customNgFocus', 'navbar.controllers', 'navbar.services', 'ui.compat', 'select.services', 'select.controllers']).
     config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.when('', '/').otherwise('/');
         $stateProvider
             .state('index', {
-                url: "/",
-                views: {
-                    "desc": {
-                        templateUrl: '/static/angular-seed/app/partials/desc.html',
-                        controller:
-                            ['$scope', function ($scope) {
-                                $scope.brand = "欢迎您选购我们的产品";
-                                $scope.desc = "我们的产品提供了必要的参数和足量的图片，希望能帮助您合理选择";
-                            }]
-                    },
-                    "sidebar": {
-                        templateUrl: '/static/angular-seed/app/partials/sidebar.html',
-                        controller: 'BrandsCtrl'
-                    }
-                }
+                url: '/',
+                abstract: true,
+                templateUrl: '/static/angular-seed/app/partials/selection.html',
+                controller: 'BrandsCtrl'
+            })
+            .state('index.about', {
+                url: '',
+                templateUrl: '/static/angular-seed/app/partials/about.html'
+            })
+            .state('index.brand', {
+                url: 'brand/{brand_name}',
+                abstract: true,
+                templateUrl: '/static/angular-seed/app/partials/content.html',
+                controller: 'DescCtrl'
+            })
+            .state('index.brand.all', {
+                url: '',
+                templateUrl: '/static/angular-seed/app/partials/product-list.html',
+                controller: 'ProductCtrl'
+            })
+            .state('index.brand.category', {
+                url: '/category/{category_name}',
+                templateUrl: '/static/angular-seed/app/partials/product-category-list.html',
+                controller: 'ProductCtrl'
             });
-    }]);
+    }]).
+    run(
+        ['$rootScope', '$state', '$stateParams', '$location',
+            function ($rootScope, $state, $stateParams, $location) {
+                $rootScope.$state = $state;
+                $rootScope.$stateParams = $stateParams;
+                $rootScope.$location = $location;
+            }]);

@@ -4,7 +4,7 @@
 import json
 import re
 from cornice import Service
-from pyramid.security import remember, authenticated_userid, Allow, Authenticated, Everyone, effective_principals
+from pyramid.security import remember, authenticated_userid, Allow
 from webob import exc
 from webob.response import Response
 from api.mapping.product import Product
@@ -20,9 +20,7 @@ VALID_PASSWORD = re.compile(r"^[\w\-\~\`\!\@\#\$\%\^\&\*\(\)\+\=\\\{\}\[\]\|\;\:
 def _check_acl(request):
     return [(Allow, 'admin', 'add')]
 
-
-user_create = Service(name='users_create', path='/users/create', description="create a user", cors_origins=('*',))
-user_login_logout = Service(name='users', path='/users', description="user login or logout", cors_origins=('*',))
+users = Service(name='users', path='/users', description="user management", cors_origins=('*',))
 products = Service(name='products', path='/products', description="product management", cors_origins=('*',), acl=_check_acl)
 brands = Service(name='brands', path='/brands', description="get all brand and their categories", cors_origins=('*',))
 brand_desc = Service(name="brand_desc", path='/brand/desc', description='get the desc for the spec brand', cors_origins=('*',))
@@ -139,7 +137,7 @@ def login_validate(request):
 
 
 
-@user_create.post(validators=create_validate)
+@users.put(validators=create_validate)
 def create_user(request):
     user = request.validated['user']
     headers = remember(request, user.username)
@@ -151,14 +149,14 @@ def create_user(request):
     return {'token': cookie_value}
 
 
-@user_login_logout.post(validators=login_validate)
+@users.post(validators=login_validate)
 def login(request):
     user = request.validated['user']
     cookie_value = user['token']
     return {'token': cookie_value}
 
 
-@user_login_logout.get(validators=valid_token)
+@users.get(validators=valid_token)
 def logout(request):
     user = request.validated['user']
     db = request.db
@@ -211,14 +209,33 @@ def validate_product(request):
 @products.get()
 def get_product(request):
     try:
-        name = request.params['name']
-        category = request.params['ca']
-    except KeyError:
-        raise _400()
+        brand = request.params['brand']
+        category = request.params['category']
+    except KeyError as e:
+        if e.message == 'category':
+            db = request.db
+            startkey = couchdb_json_encode([brand, ])
+            endkey = couchdb_json_encode([brand, {}])
+            return db.resource('_design', 'product', '_view', 'product_list').get_json(startkey=startkey, endkey=endkey)[2]
+        else:
+            raise _400()
+    # es = request.es
+    # query = {
+    #     'query': {
+    #         'match': {
+    #             'brand': {
+    #                 'query': brand,
+    #                 'type': 'phrase'
+    #             }
+    #         }
+    #     }
+    # }
+    # result = es.search(query, index='test', doc_type='product')
+    # return result['hits']
     db = request.db
-    name = couchdb_json_encode([name, category])
-    result = db.resource('_design', 'product', '_view', 'by_brand_category').get_json(key=name)[2]
-    return result
+    key = couchdb_json_encode([brand, category])
+    return db.resource('_design', 'product', '_view', 'product_list').get_json(key=key)[2]
+
 
 
 @products.post(validators=(valid_token, validate_product), permission='add')
@@ -247,5 +264,5 @@ def get_brand_desc(request):
     except KeyError:
         raise _400()
     db = request.db
-    result = db.resource('_design', 'brand', '_view', 'by_desc').get_json(key=couchdb_json_encode(name))[2]
+    result = db.resource('_design', 'brand_desc', '_view', 'by_name').get_json(key=couchdb_json_encode(name))[2]
     return result

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('navbar.controllers', ['ngCookies']).
-  controller('NavBar', ['$scope', 'SignUp', '$cookieStore', 'Login', function($scope, SignUp, $cookieStore, Login) {
+  controller('NavBar', ['$scope', 'Users', '$cookieStore', '$rootScope', '$timeout', function($scope, Users, $cookieStore, $rootScope, $timeout) {
 
         $scope.isNav = true;
         $scope.isSearch = true;
@@ -9,11 +9,11 @@ angular.module('navbar.controllers', ['ngCookies']).
         $scope.loginText = "登陆";
 
 
-        $scope.login = function () {
+        $rootScope.login = function () {
             $scope.loginOpen = true;
         };
 
-        $scope.signup = function () {
+        $rootScope.signup = function () {
             $scope.signupOpen = true;
         };
 
@@ -21,8 +21,6 @@ angular.module('navbar.controllers', ['ngCookies']).
             backdropFade: true,
             dialogFade:true
         };
-
-
 
         $scope.loginClose = function () {
             $scope.loginOpen = false;
@@ -35,14 +33,14 @@ angular.module('navbar.controllers', ['ngCookies']).
         $scope.signupSubmit = function () {
             $scope.waitSign = true;
             $scope.signupText = "注册中...";
-            var newUser = new SignUp($scope.signup);
+            var newUser = new Users($scope.signup);
             newUser.$signup(function (data) {
                 if (data.token){
                     $cookieStore.put('auth_tkt', data.token);
-                    setTimeout(function() {
+                    $timeout(function() {
                         $scope.signupOpen = false;
                         location.reload();
-                    }, 500);
+                    }, 10);
                 }
                 else {
                     $scope.waitSign = false;
@@ -75,14 +73,14 @@ angular.module('navbar.controllers', ['ngCookies']).
         $scope.loginSubmit = function () {
             $scope.waitLogin = true;
             $scope.loginText = "登录中...";
-            var user = new Login($scope.login);
+            var user = new Users($scope.login);
             user.$login(function (data) {
                 if (data.token) {
                     $cookieStore.put('auth_tkt', data.token);
-                    setTimeout(function() {
+                    $timeout(function() {
                         $scope.loginOpen = false;
                         location.reload();
-                    }, 500);
+                    }, 10);
                 }
                 else {
                     $scope.waitLogin = false;
@@ -118,18 +116,16 @@ angular.module('navbar.controllers', ['ngCookies']).
 
         $scope.logout = function () {
             var token = $cookieStore.get('auth_tkt');
-            var user = new Login({token: token});
-            Login.logout({token: token}, function (data) {
+            Users.logout({token: token}, function () {
                 $cookieStore.remove('auth_tkt');
-                setTimeout(function() {
+                $timeout(function() {
                     location.reload();
-                }, 500);
+                }, 10);
             }, function () {
                 $cookieStore.remove('auth_tkt');
-                $cookieStore.remove('auth_tkt');
-                setTimeout(function() {
+                $timeout(function() {
                     location.reload();
-                }, 500);
+                }, 10);
             });
         }
 

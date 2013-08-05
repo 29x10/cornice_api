@@ -2,11 +2,12 @@
 """
 from urllib import quote
 from couchdb.client import Server
+from pyelasticsearch.client import ElasticSearch
 from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.config import Configurator
-from pyramid.events import subscriber, NewRequest, BeforeRender
-from pyramid.security import authenticated_userid, Allow, Everyone
+from pyramid.events import NewRequest
+from pyramid.security import Allow, Everyone
 from api.mapping.user import groupfinder
 
 
@@ -15,6 +16,7 @@ def add_couchdb_to_request(event):
     settings = request.registry.settings
     db = settings['CouchDB.server'][settings['CouchDB.db_name']]
     event.request.db = db
+    event.request.es = settings['ES.server']
     if 'token' in request.params:
         token = request.params.get('token', '')
         token = quote(token[:-23]) + token[-23:]
@@ -39,9 +41,11 @@ def main(global_config, **settings):
     config.set_authentication_policy(auth_token)
     config.set_authorization_policy(auth_permission)
     db_server = Server(url=settings['CouchDB.url'])
+    es_server = ElasticSearch(settings['ES.url'])
     if settings['CouchDB.db_name'] not in db_server:
         db_server.create(settings['CouchDB.db_name'])
     config.registry.settings['CouchDB.server'] = db_server
+    config.registry.settings['ES.server'] = es_server
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.include("cornice")
     config.add_subscriber(add_couchdb_to_request, NewRequest)

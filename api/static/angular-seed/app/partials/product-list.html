@@ -1,29 +1,22 @@
-<div>
-    <div class="bs-docs-section" ng-repeat="">
+<div ng-repeat="brand in brands | filter: {key: $stateParams.brand_name}">
+    <div ng-repeat="category in brand.value">
         <div class="page-header">
-            <h1></h1>
+            <h3 id="{{category}}">{{category}}</h3>
         </div>
-        <p class="lead">Toggleable, contextual menu for displaying lists of links. Made interactive with the <a
-            href="./javascript.html#dropdowns">dropdown JavaScript plugin</a>.</p>
-
-    <h3 id="dropdowns-example">Example</h3>
-
-    <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element
-                    that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
-
-    <div class="bs-example">
-        <div class="dropdown clearfix">
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li><a tabindex="-1" href="#">Action</a></li>
-                <li><a tabindex="-1" href="#">Another action</a></li>
-                <li><a tabindex="-1" href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="-1" href="#">Separated link</a></li>
-            </ul>
+        <div class="row">
+            <div class="col-lg-4" ng-repeat="product in products | filter: {value.category: category}">
+                <div class="thumbnail">
+                    <img src="/static/1.jpg" alt="">
+                    <div class="caption">
+                        <h3>{{product.value.spec}}</h3>
+                        <p>{{product.value.category}}</p>
+                        <p>
+                            <button class="btn btn-primary" ng-click="add2Cart(product.value._id)">添加到购物车</button>
+                            <button class="btn btn-default" ng-click="clearCart()">清空购物车</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- /example -->
-    <div class="highlight">
     </div>
 </div>
-
