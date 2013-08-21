@@ -18,15 +18,14 @@ class Product(Document):
             }
         }''','''
         function (keys, values, rereduce) {
-            var category_dict = {};
-            for (var index in values) {
-                category_dict[values[index]] = values[index];
+            var u = {}, a = [];
+            for (var i = 0; i < values.length; i++) {
+                if (!u.hasOwnProperty(values[i])) {
+                    a.push(values[i]);
+                    u[values[i]] = 1;
+                }
             }
-            var category = [];
-            for (var index in category_dict) {
-                category.push(index);
-            }
-            return category
+        return a;
         }''')
 
     product_list = ViewDefinition('product', 'product_list', '''

@@ -1,21 +1,106 @@
-.glyphicon {
-    color: white;
+body {
+    padding-top: 50px;
 }
 
-.navbar-toggle {
-    position: relative;
-    float: right;
+.glyphicon {
+    /*color: #23B27E;*/
 }
+
+.btn {
+    border-radius: 2px;
+    font-weight: normal;
+}
+
+.btn-primary {
+    background: none repeat scroll 0% 0% #23B27E;
+    border: 0px none;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: none repeat scroll 0% 0% #1F9D6F;
+    color: #ffffff;
+}
+
+.index {
+    background: none repeat scroll 0% 0% rgb(0, 0, 0);
+    height: 440px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 140px 0px 0px;
+    position: relative;
+}
+
+.index h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 0.2em;
+    margin-top: 0.2em;
+}
+
+.index p {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 1.5em;
+}
+
+.bg {
+    background: url("/static/bg-table.jpg") no-repeat scroll 50% 65% / cover transparent;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 0;
+    opacity: 0.9;
+}
+
+.index .btn {
+    padding: 1.3em 2.5em 1.2em;
+    font-size: 17px;
+    line-height: 1;
+}
+
+
+.index .container {
+    position: relative;
+    z-index: 100;
+}
+
+.index .container > div {
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+.index .container > div a {
+    color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+input[type=text],input[type=password],textarea {
+    /*border:2px solid #dddedf;*/
+    border-radius:2px;
+    width:100%;
+    box-sizing:border-box;
+    transition:all .1s ease
+}
+
+.alert {
+    /*padding: 10px 70px;*/
+    /*list-style: none outside none;*/
+    background: none repeat scroll 0% 0% #E66F2D;
+    /*margin: 20px -70px;*/
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    /*font-size: 13px;*/
+}
+
+
+
 
 @media screen and (min-width: 768px) {
-    .nav-collapse.collapse .navbar-form {
-        display: table;
-        float: right;
-    }
-
-    .nav-collapse.nav-bar.collapse > ul:first-child {
-        float: right;
-    }
 
     .add-alert {
         left: 0px;
@@ -25,6 +110,25 @@
         padding-right: 15px;
         z-index: 2000;
         text-align: center;
+    }
+
+    .sep {
+        border-left: 1px solid #DDDDDD;
+        width: 1px;
+        margin: 14px 20px;
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .navbar-form {
+        border-top: none;
+        padding-top: 0px;
+    }
+
+    .nav .btn {
+        width: 100%;
     }
 }
 
@@ -40,72 +144,4 @@
     -moz-transition: height 0.35s ease;
     -o-transition: height 0.35s ease;
     transition: height 0.35s ease;
-}
-
-.slide-reveal {
-    -webkit-transition:0.5s linear all;
-    -moz-transition:0.5s linear all;
-    -o-transition:0.5s linear all;
-    transition:0.5s linear all;
-    position:relative;
-    opacity:0;
-    top:10px;
-}
-.slide-reveal.slide-reveal-active {
-    top:0;
-    opacity:1;
-}
-
-.expand-enter {
-    -webkit-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-    -moz-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-    -o-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-    transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-
-    opacity:0;
-    line-height:0;
-    height:0!important;
-}
-.expand-enter.expand-enter-active {
-    opacity:1;
-    line-height:20px;
-    height:20px!important;
-}
-
-.expand-leave {
-    -webkit-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-    -moz-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-    -o-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-    transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-
-    opacity:1;
-    height:20px;
-}
-.expand-leave.expand-leave-active {
-    opacity:0;
-    height:0;
-}
-
-
-.animate-enter {
-    -webkit-animation: enter_sequence 1s linear; /* Safari/Chrome */
-    -moz-animation: enter_sequence 1s linear; /* Firefox */
-    -o-animation: enter_sequence 1s linear; /* Opera */
-    animation: enter_sequence 1s linear; /* IE10+ and Future Browsers */
-}
-@-webkit-keyframes enter_sequence {
-    from { opacity:0; }
-    to { opacity:1; }
-}
-@-moz-keyframes enter_sequence {
-    from { opacity:0; }
-    to { opacity:1; }
-}
-@-o-keyframes enter_sequence {
-    from { opacity:0; }
-    to { opacity:1; }
-}
-@keyframes enter_sequence {
-    from { opacity:0; }
-    to { opacity:1; }
 }

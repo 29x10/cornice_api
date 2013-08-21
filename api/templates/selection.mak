@@ -6,10 +6,10 @@
     <title>立仁泰华 | 产品选型</title>
     <link rel="shortcut icon" href="${request.static_url('api:static/favicon.ico')}"/>
     <!-- Bootstrap -->
-    <link href="${request.static_url('api:static/bootstrap/css/bootstrap.min.css')}" rel="stylesheet">
-##    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${request.static_url('api:static/icons/css/bootstrap-glyphicons.css')}" rel="stylesheet">
-    <link href="${request.static_url('api:static/docs.css')}" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+##    <link href="${request.static_url('api:static/docs.css')}" rel="stylesheet">
     <link href="${request.static_url('api:static/adjust.css')}" rel="stylesheet">
 </head>
 <body>
@@ -26,8 +26,7 @@ ${comp.navbar()}
 <script src="${request.static_url('api:static/angular-bootstrap/ui-bootstrap-tpls-0.5.0-SNAPSHOT.min.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/lib/angular-ui-router.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/lib/custom-ng-focus.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/js/navbar/controllers.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/js/navbar/services.js')}"></script>
+<script src="${request.static_url('api:static/angular-seed/app/js/navbar/compat.min.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/js/selection/app.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/js/selection/controllers.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/js/selection/services.js')}"></script>
