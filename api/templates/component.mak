@@ -15,11 +15,10 @@
                 <div class="navbar-collapse" collapse="isNav">
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="产品" autocomplete="off">
+                            <input type="text" class="form-control" placeholder="产品">
                         </div>
-                        <button type="submit" class="btn btn-primary">搜索</button>
+                        <button type="submit" class="btn btn-default">搜索</button>
                     </form>
-
                     <ul class="nav navbar-nav navbar-right">
                         <li ${'class=active' if request.path == '/' else ''}><a href="/">首页</a></li>
                         <li ${'class=active' if request.path == '/selection' else ''}><a href="/selection">产品选型</a></li>
@@ -31,7 +30,7 @@
                                 </li>
                         %else:
                                 <li><a href ng-click="login()">登陆</a></li>
-                                <li><button type="button" class="btn btn-primary navbar-btn">注册</button></li>
+                                <li class="btn-navbar"><button type="button" class="btn btn-primary navbar-btn">注册</button></li>
                         %endif
                     </ul>
 

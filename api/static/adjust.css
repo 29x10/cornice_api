@@ -3,39 +3,48 @@ body {
 }
 
 .glyphicon {
-    /*color: #23B27E;*/
+    color: #23B27E;
+}
+
+.btn-primary .glyphicon {
+    color: #ffffff;
 }
 
 .btn {
     border-radius: 2px;
-    font-weight: normal;
 }
 
 .btn-primary {
-    background: none repeat scroll 0% 0% #23B27E;
-    border: 0px none;
-    color: #ffffff;
+	background: #23b27e;
+    border-color: #23b27e;
 }
 
-.btn-primary:hover {
-    background: none repeat scroll 0% 0% #1F9D6F;
+.btn-primary:hover{
+    background: #009969;
     color: #ffffff;
+    border-color: #009969;
+}
+
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary.active {
+	background-color: #23b27e;
+	border-color: #23b27e
 }
 
 .index {
-    background: none repeat scroll 0% 0% rgb(0, 0, 0);
-    height: 440px;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    padding: 140px 0px 0px;
-    position: relative;
+    background:#000;
+    height:440px;
+    text-align:center;
+    color:#fff;
+    padding:140px 0 0;
+    position:relative;
 }
 
+
 .index h1 {
-    font-size: 4rem;
-    font-weight: 600;
-    margin-bottom: 0.2em;
-    margin-top: 0.2em;
+    font-size:4rem;
+    font-weight:600;
+    margin-bottom:.2em;
+    margin-top:.2em;
 }
 
 .index p {
@@ -45,14 +54,15 @@ body {
 }
 
 .bg {
-    background: url("/static/bg-table.jpg") no-repeat scroll 50% 65% / cover transparent;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: 0;
-    opacity: 0.9;
+    background:url(/static/bg-table.jpg) 50% 65% no-repeat;
+	background-size:cover;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:0;
+	opacity:.9;
 }
 
 .index .btn {
@@ -79,26 +89,43 @@ body {
     font-weight: 600;
 }
 
-input[type=text],input[type=password],textarea {
-    /*border:2px solid #dddedf;*/
-    border-radius:2px;
-    width:100%;
-    box-sizing:border-box;
-    transition:all .1s ease
-}
-
 .alert {
-    /*padding: 10px 70px;*/
-    /*list-style: none outside none;*/
-    background: none repeat scroll 0% 0% #E66F2D;
-    /*margin: 20px -70px;*/
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    /*font-size: 13px;*/
+    margin:0;
+	padding:10px 70px;
+	list-style:none;
+	background:#e66f2d;
+	margin:20px 0px 20px;
+	color:#fff;
+	/*font-weight:bold;*/
+	/*font-size:13px*/
 }
 
+.navbar-form .btn-primary {
+    border: 1px solid transparent;
+}
 
+input[type=text],input[type=password],textarea{
+	border:2px solid #dddedf;
+	border-radius:2px;
+	width:100%;
+	box-sizing:border-box;
+	transition:all .1s ease
+}
 
+input[type=text]:focus,input[type=password]:focus,textarea:focus{
+	outline:none;
+	border-color:#c3c5c6;
+    box-shadow: none;
+}
+
+.has-error .form-control:focus {
+    border-color: #953b39;
+    box-shadow: none;
+}
+
+.modal-title {
+    text-align: center;
+}
 
 @media screen and (min-width: 768px) {
 
@@ -130,6 +157,10 @@ input[type=text],input[type=password],textarea {
     .nav .btn {
         width: 100%;
     }
+
+    .btn-navbar {
+        padding: 0px 15px;
+    }
 }
 
 .form-horizontal .alert {
@@ -144,4 +175,31 @@ input[type=text],input[type=password],textarea {
     -moz-transition: height 0.35s ease;
     -o-transition: height 0.35s ease;
     transition: height 0.35s ease;
+}
+
+section {
+    text-align: center;
+    padding: 100px 10%;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    background: none repeat scroll 0% 0% rgb(234, 237, 241);
+}
+
+section h2 {
+    color: #00B27B;
+    max-width: 800px;
+    margin: 0.8em auto;
+}
+
+section .row {
+    margin: 40px 0px;
+}
+
+section .col > div {
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(238, 238, 238);
+    padding: 30px;
+}
+
+footer {
+    color: #777777;
 }

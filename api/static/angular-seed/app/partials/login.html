@@ -4,36 +4,11 @@
         <h4 class="modal-title">登陆</h4>
     </div>
     <div class="modal-body">
-        <div class="alert">
-            asdfasdf
-        </div>
         <form class="form-horizontal" name="loginForm">
-
             <div class="form-group" ng-class="{'has-error': (loginUserF && !(loginForm.loginUser.$valid)) || userNExist}">
-                <label class="col-lg-2 control-label" for="loginUser">用户名</label>
-
+                <!--<label class="col-lg-2 control-label col-lg-offset-1" for="loginUser">用户名</label>-->
+                <label class="col-lg-2 col-lg-offset-1 control-label" for="loginUser"><span class="glyphicon glyphicon-user"></span> </label>
                 <div class="col-lg-6">
-                    <label class="control-label" for="loginUser"
-                           ng-show="loginUserF && loginForm.loginUser.$error.minlength">
-                        用户名不能少于6个字符
-                    </label>
-                    <label class="control-label" for="loginUser"
-                           ng-show="loginUserF && loginForm.loginUser.$error.maxlength">
-                        用户名不能多于30个字符
-                    </label>
-                    <label class="control-label" for="loginUser"
-                           ng-show="loginUserF && loginForm.loginUser.$error.required">
-                        用户名不能为空
-                    </label>
-                    <label class="control-label" for="loginUser"
-                           ng-show="loginUserF && loginForm.loginUser.$error.pattern">
-                        用户名只能以英文字母开头，其余为英文、数字、点、减号或者下划线
-                    </label>
-                    <label class="control-label" for="loginUser"
-                           ng-show="userNExist">
-                        用户不存在
-                    </label>
-
                     <input class="form-control" type="text" id="loginUser" name="loginUser" placeholder="用户名" autocomplete="off"
                            ng-model="login.user"
                            ng-click="rmNUE()"
@@ -41,12 +16,27 @@
                            ng-minlength="6" ng-maxlength="30"
                            ng-pattern="/^[A-Za-z][\w.-]*$/"
                            required>
+                    <div class="alert alert-warning" ng-show="loginUserF && loginForm.loginUser.$error.minlength">
+                        用户名不能少于6个字符
+                    </div>
+                    <div class="alert" ng-show="loginUserF && loginForm.loginUser.$error.maxlength">
+                        用户名不能多于30个字符
+                    </div>
+                    <div class="alert" ng-show="loginUserF && loginForm.loginUser.$error.required">
+                        用户名不能为空
+                    </div>
+                    <div class="alert" ng-show="loginUserF && loginForm.loginUser.$error.pattern">
+                        用户名只能以英文字母开头，其余为英文、数字、点、减号或者下划线
+                    </div>
+                    <div class="alert" ng-show="userNExist">
+                        用户不存在
+                    </div>
                 </div>
             </div>
             <div class="form-group" ng-class="{'has-error': (loginPsdF && !(loginForm.loginPsd.$valid)) || passError}">
-                <label class="col-lg-2 control-label" for="loginPsd">密码</label>
-
-                <div class="col-lg-10">
+                <!--<label class="col-lg-2 control-label col-lg-offset-1" for="loginPsd">密码</label>-->
+                <label class="col-lg-2 col-lg-offset-1 control-label" for="loginUser"><span class="glyphicon glyphicon-lock"></span> </label>
+                <div class="col-lg-6">
                     <input class="form-control" type="password" id="loginPsd" name="loginPsd" placeholder="密码" autocomplete="off"
                            ng-model="login.password"
                            ng-focus="loginPsdF"
@@ -76,10 +66,9 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" ng-click="loginClose()">取消</button>
-        <button id="login-submit" class="btn btn-primary btn-lg" autocomplete="off"
+        <button id="login-submit" class="btn btn-primary" autocomplete="off"
                 ng-disabled="waitLogin || !(loginForm.$valid)"
-                ng-click="loginSubmit()">
-            {{loginText}}
+                ng-click="loginSubmit()"><span class="glyphicon glyphicon-log-in"></span> {{loginText}}
         </button>
     </div>
 </div>
