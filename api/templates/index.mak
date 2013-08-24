@@ -6,11 +6,8 @@
     <title>立仁泰华 | 首页</title>
     <link rel="shortcut icon" href="${request.static_url('api:static/favicon.ico')}"/>
     <!-- Bootstrap -->
-##    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-##    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-<link href="${request.static_url('api:static/bootstrap/css/bootstrap.css')}" rel="stylesheet">
-##    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
-##    <link href="${request.static_url('api:static/docs.css')}" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+##    <link href="${request.static_url('api:static/bootstrap/css/bootstrap.css')}" rel="stylesheet">
     <link href="${request.static_url('api:static/adjust.css')}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="${request.static_url('api:static/html5shiv.js')}"></script>
@@ -33,7 +30,7 @@ ${comp.navbar()}
     <h2>我们的优势</h2>
     <div class="container">
         <div class="row">
-            <div class="col col-lg-4">
+            <div class="col col-sm-4">
                 <div>
                     <h4>科学管理模式</h4>
                     <p>
@@ -41,7 +38,7 @@ ${comp.navbar()}
                     </p>
                 </div>
             </div>
-            <div class="col col-lg-4">
+            <div class="col col-sm-4">
                 <div>
                     <h4>尽可能低的价格</h4>
                     <p>
@@ -49,7 +46,7 @@ ${comp.navbar()}
                     </p>
                 </div>
             </div>
-            <div class="col col-lg-4">
+            <div class="col col-sm-4">
                 <div>
                     <h4>良好的服务</h4>
                     <p>
@@ -59,15 +56,15 @@ ${comp.navbar()}
             </div>
         </div>
         <div class="row">
-            <div class="col col-lg-4">
+            <div class="col col-sm-4">
                 <div>
-                    <h4>严格的权限管理</h4>
+                    <h4>强大的站内搜索能力</h4>
                     <p>
-                        严格控制用户的权限，提高用户账户安全性
+                        通过站内搜索，用户可以很方便的找到自己想要的产品
                     </p>
                 </div>
             </div>
-            <div class="col col-lg-4">
+            <div class="col col-sm-4">
                 <div>
                     <h4>全平台浏览</h4>
                     <p>
@@ -75,7 +72,7 @@ ${comp.navbar()}
                     </p>
                 </div>
             </div>
-            <div class="col col-lg-4">
+            <div class="col col-sm-4">
                 <div>
                     <h4>丰富的产品经验</h4>
                     <p>
@@ -87,20 +84,21 @@ ${comp.navbar()}
     </div>
 </section>
 
-##<footer>
-##    <div class="container">
-##        <div class="row">
-##            <div class="col-lg-1">
-##
-##            </div>
-##            <div class="col-lg-9">
-##                <ul class="nav-pills">
-##                    <li><a href>首页</a> </li>
-##                </ul>
-##            </div>
-##        </div>
-##    </div>
-##</footer>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <p>联系地址: 北京市西城区西四北大街157号838-839</p>
+            </div>
+            <div class="col-lg-2">
+                <p>销售电话: 010-66170526</p>
+            </div>
+            <div class="col-lg-2">
+                <p>传真: 010-66131728</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script src="${request.static_url('api:static/angular-seed/app/lib/angular/angular.min.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/lib/angular/angular-resource.min.js')}"></script>

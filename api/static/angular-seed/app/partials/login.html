@@ -6,9 +6,8 @@
     <div class="modal-body">
         <form class="form-horizontal" name="loginForm">
             <div class="form-group" ng-class="{'has-error': (loginUserF && !(loginForm.loginUser.$valid)) || userNExist}">
-                <!--<label class="col-lg-2 control-label col-lg-offset-1" for="loginUser">用户名</label>-->
-                <label class="col-lg-2 col-lg-offset-1 control-label" for="loginUser"><span class="glyphicon glyphicon-user"></span> </label>
-                <div class="col-lg-6">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <label class="control-label" for="loginUser">用户名: </label>
                     <input class="form-control" type="text" id="loginUser" name="loginUser" placeholder="用户名" autocomplete="off"
                            ng-model="login.user"
                            ng-click="rmNUE()"
@@ -34,9 +33,8 @@
                 </div>
             </div>
             <div class="form-group" ng-class="{'has-error': (loginPsdF && !(loginForm.loginPsd.$valid)) || passError}">
-                <!--<label class="col-lg-2 control-label col-lg-offset-1" for="loginPsd">密码</label>-->
-                <label class="col-lg-2 col-lg-offset-1 control-label" for="loginUser"><span class="glyphicon glyphicon-lock"></span> </label>
-                <div class="col-lg-6">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <label class="control-label" for="loginPsd">密码:</label>
                     <input class="form-control" type="password" id="loginPsd" name="loginPsd" placeholder="密码" autocomplete="off"
                            ng-model="login.password"
                            ng-focus="loginPsdF"
@@ -59,7 +57,6 @@
                     <div class="alert" ng-show="passError">
                         密码不正确
                     </div>
-
                 </div>
             </div>
         </form>

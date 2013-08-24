@@ -100,6 +100,10 @@ body {
 	/*font-size:13px*/
 }
 
+.modal-body .form-group .alert {
+    text-align: center;
+}
+
 .navbar-form .btn-primary {
     border: 1px solid transparent;
 }
@@ -145,6 +149,16 @@ input[type=text]:focus,input[type=password]:focus,textarea:focus{
         margin: 14px 20px;
         height: 20px;
     }
+
+    .modal-body .form-group .alert {
+        margin-left: -162px;
+        margin-right: -162px;
+        border-radius: 0;
+    }
+
+    .intro .row {
+        margin: 40px 0px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -160,6 +174,16 @@ input[type=text]:focus,input[type=password]:focus,textarea:focus{
 
     .btn-navbar {
         padding: 0px 15px;
+    }
+
+    .modal-body .form-group .alert {
+        margin-left: -20px;
+        margin-right: -20px;
+        border-radius: 0;
+    }
+
+    .intro .col {
+        margin: 40px 0px;
     }
 }
 
@@ -190,9 +214,7 @@ section h2 {
     margin: 0.8em auto;
 }
 
-section .row {
-    margin: 40px 0px;
-}
+
 
 section .col > div {
     background: none repeat scroll 0% 0% rgb(255, 255, 255);
@@ -201,5 +223,11 @@ section .col > div {
 }
 
 footer {
-    color: #777777;
+    padding:50px 0;
+    color:#777;
+    border-top:1px solid #ddd
+}
+
+footer p {
+    text-align: center;
 }
