@@ -6,9 +6,11 @@
     <title>立仁泰华 | 首页</title>
     <link rel="shortcut icon" href="${request.static_url('api:static/favicon.ico')}"/>
     <!-- Bootstrap -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-##    <link href="${request.static_url('api:static/bootstrap/css/bootstrap.css')}" rel="stylesheet">
-    <link href="${request.static_url('api:static/adjust.css')}" rel="stylesheet">
+##    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${request.static_url('api:static/bootstrap/css/bootstrap.css')}" rel="stylesheet">
+    <link href="${request.static_url('api:static/base.css')}" rel="stylesheet">
+    <link href="${request.static_url('api:static/navbar.css')}" rel="stylesheet">
+    <link href="${request.static_url('api:static/index.css')}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="${request.static_url('api:static/html5shiv.js')}"></script>
     <script src="${request.static_url('api:static/respond.min.js')}"></script>
@@ -100,11 +102,10 @@ ${comp.navbar()}
     </div>
 </footer>
 
-<script src="${request.static_url('api:static/angular-seed/app/lib/angular/angular.min.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/lib/angular/angular-resource.min.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/lib/angular/angular-cookies.min.js')}"></script>
-##<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-resource.min.js"></script>
-##<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-cookies.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-resource.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-cookies.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 <script src="${request.static_url('api:static/angular-bootstrap/ui-bootstrap-tpls-0.5.0-SNAPSHOT.min.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/lib/custom-ng-focus.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/js/navbar/compat.min.js')}"></script>

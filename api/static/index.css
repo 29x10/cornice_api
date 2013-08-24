@@ -1,0 +1,101 @@
+.index {
+    background:#000;
+    height:440px;
+    text-align:center;
+    color:#fff;
+    padding:140px 0 0;
+    position:relative;
+}
+
+
+.index h1 {
+    font-size:4rem;
+    font-weight:600;
+    margin-bottom:.2em;
+    margin-top:.2em;
+}
+
+.index p {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 1.5em;
+}
+
+.bg {
+    background:url(https://d1hjm33yswheja.cloudfront.net/img/bg-table.jpg) 50% 65% no-repeat;
+	background-size:cover;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:0;
+	opacity:.9;
+}
+
+.index .btn {
+    padding: 1.3em 2.5em 1.2em;
+    font-size: 17px;
+    line-height: 1;
+}
+
+
+.index .container {
+    position: relative;
+    z-index: 100;
+}
+
+.index .container > div {
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+.index .container > div a {
+    color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+    .intro .row {
+        margin: 40px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .intro .col {
+        margin: 40px 0;
+    }
+}
+
+section {
+    text-align: center;
+    padding: 100px 10%;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    background: none repeat scroll 0 0 rgb(234, 237, 241);
+}
+
+section h2 {
+    color: #00B27B;
+    max-width: 800px;
+    margin: 0.8em auto;
+}
+
+
+
+section .col > div {
+    background: none repeat scroll 0 0 rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(238, 238, 238);
+    padding: 30px;
+}
+
+footer {
+    padding:50px 0;
+    color:#777;
+    border-top:1px solid #ddd
+}
+
+footer p {
+    text-align: center;
+}

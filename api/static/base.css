@@ -1,0 +1,63 @@
+.btn-primary .glyphicon {
+    color: #ffffff;
+}
+
+.btn {
+    border-radius: 2px;
+}
+
+.btn-primary {
+	background: #23b27e;
+    border-color: #23b27e;
+}
+
+.btn-primary:hover{
+    background: #009969;
+    color: #ffffff;
+    border-color: #009969;
+}
+
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary.active {
+	background-color: #23b27e;
+	border-color: #23b27e
+}
+
+.alert {
+	padding:10px 70px;
+	list-style:none;
+	background:#e66f2d;
+	margin:20px 0 20px;
+	color:#fff;
+}
+
+input[type=text],input[type=password],textarea{
+	border:2px solid #dddedf;
+	border-radius:2px;
+	width:100%;
+	box-sizing:border-box;
+	transition : all .1s ease
+}
+
+input[type=text]:focus,input[type=password]:focus,textarea:focus{
+	outline:none;
+	border-color:#c3c5c6;
+    box-shadow: none;
+}
+
+.has-error .form-control:focus {
+    box-shadow: none;
+}
+
+.form-horizontal .alert {
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+
+.collapse {
+    display: block;
+    overflow: hidden;
+    -webkit-transition: height 0.35s ease;
+    -moz-transition: height 0.35s ease;
+    -o-transition: height 0.35s ease;
+    transition: height 0.35s ease;
+}

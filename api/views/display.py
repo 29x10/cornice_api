@@ -16,3 +16,7 @@ def selection(request):
 @view_config(name='checkout', renderer='checkout.mak')
 def checkout_view(request):
     return dict(user_login=authenticated_userid(request))
+
+@view_config(name='login', renderer='login.mak')
+def login_view(request):
+    return dict(user_login=authenticated_userid(request))

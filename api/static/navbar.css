@@ -1,0 +1,57 @@
+body {
+    padding-top: 50px;
+}
+
+.glyphicon {
+    color: #23B27E;
+}
+
+.modal-title {
+    text-align: center;
+}
+
+.modal-body .form-group .alert {
+    text-align: center;
+}
+
+.navbar-form .btn-primary {
+    border: 1px solid transparent;
+}
+
+@media screen and (min-width: 768px) {
+    .sep {
+        border-left: 1px solid #DDDDDD;
+        width: 1px;
+        margin: 14px 20px;
+        height: 20px;
+    }
+
+    .modal-body .form-group .alert {
+        margin-left: -162px;
+        margin-right: -162px;
+        border-radius: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-form {
+        border-top: none;
+        padding-top: 0;
+    }
+
+    .nav .btn {
+        width: 100%;
+    }
+
+    .btn-navbar {
+        padding: 0 15px;
+    }
+
+    .modal-body .form-group .alert {
+        margin-left: -20px;
+        margin-right: -20px;
+        border-radius: 0;
+    }
+}
+
+

@@ -1,0 +1,51 @@
+body.login{
+    background:#eaedf1;
+}
+
+.login h3 {
+    color: #00B27B;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.login .box {
+    padding:40px 60px 40px;
+    background:#fff;
+    overflow:hidden
+}
+
+.login .box .alert {
+    margin-left: -45px;
+    margin-right: -45px;
+    border-radius: 0;
+}
+
+.glyphicon {
+    color: #23B27E;
+}
+
+.intro-list {
+    margin: 20px 0;
+    font-size: 1.2em;
+}
+
+.login .form-horizontal .btn {
+    float: right;
+    margin-right: -15px;
+}
+
+
+.forget {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-left {
+    padding-left: 40px;
+}
+
+@media screen and (min-width: 768px) {
+    .login .box {
+        margin-top: 100px;
+    }
+}

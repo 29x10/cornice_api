@@ -29,7 +29,7 @@
                                 <li><a href ng-click="logout()">登出</a>
                                 </li>
                         %else:
-                                <li><a href ng-click="login()">登陆</a></li>
+                                <li><a href="/login">登陆</a></li>
                                 <li class="btn-navbar"><button type="button" class="btn btn-primary navbar-btn">注册</button></li>
                         %endif
                     </ul>
