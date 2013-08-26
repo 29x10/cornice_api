@@ -22,7 +22,7 @@
 }
 
 .bg {
-    background:url(https://d1hjm33yswheja.cloudfront.net/img/bg-table.jpg) 50% 65% no-repeat;
+    background:url(/static/bg-table.jpg) 50% 65% no-repeat;
 	background-size:cover;
 	position:absolute;
 	top:0;

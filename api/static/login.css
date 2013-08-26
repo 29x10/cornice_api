@@ -29,9 +29,14 @@ body.login{
     font-size: 1.2em;
 }
 
-.login .form-horizontal .btn {
+.login .form-horizontal .btn-primary {
     float: right;
     margin-right: -15px;
+}
+
+.login .form-horizontal .btn-default {
+    float: left;
+    margin-left: -15px;
 }
 
 

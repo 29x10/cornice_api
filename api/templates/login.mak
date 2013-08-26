@@ -91,6 +91,7 @@
                     <span>没有帐号?</span>
                     <a href="/signup">点击注册</a>
                 </div>
+                <a href="/" type="button" class="btn btn-default">返回首页</a>
                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> 登陆</button>
             </form>
         </div>

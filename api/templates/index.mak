@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta property="wb:webmaster" content="8f04baf4576b240e" />
     <title>立仁泰华 | 首页</title>
     <link rel="shortcut icon" href="${request.static_url('api:static/favicon.ico')}"/>
     <!-- Bootstrap -->
