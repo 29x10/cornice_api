@@ -1,4 +1,4 @@
 'use strict';
 
 
-angular.module('navbar', ['ui.bootstrap', 'customNgFocus', 'navbar.controllers', 'navbar.services']);
+angular.module('navbar', ['ui.bootstrap', 'navbar.controllers', 'navbar.services']);

@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('login', ['customNgFocus']);
+angular.module('login', ['login.controllers', 'login.services']);

@@ -2,8 +2,16 @@ body {
     padding-top: 50px;
 }
 
+.navbar-collapse {
+    border: 0 none;
+}
+
 .glyphicon {
     color: #23B27E;
+}
+
+.navbar-toggle .glyphicon {
+    color: #cccccc;
 }
 
 .modal-title {
@@ -18,6 +26,19 @@ body {
     border: 1px solid transparent;
 }
 
+.signup-btn {
+    border-color: #23B27E;
+    border-width: 2px;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    color: #23b27e;
+}
+
+.signup-btn:hover {
+    border-color: #009969;
+    color: #009969;
+    background-color: #ffffff;
+}
 @media screen and (min-width: 768px) {
     .sep {
         border-left: 1px solid #DDDDDD;
@@ -52,6 +73,20 @@ body {
         margin-right: -20px;
         border-radius: 0;
     }
+
+    .navbar-toggle.pull-left {
+        margin-left: 15px;
+        margin-right: 0;
+    }
+
+    .navbar-toggle {
+        padding: 3px 12px;
+        font-size: 18px;
+        color: white;
+        width: auto;
+        height: auto;
+    }
+
 }
 
 

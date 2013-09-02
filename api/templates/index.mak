@@ -106,10 +106,8 @@ ${comp.navbar()}
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-resource.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-cookies.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 <script src="${request.static_url('api:static/angular-bootstrap/ui-bootstrap-tpls-0.5.0-SNAPSHOT.min.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/lib/custom-ng-focus.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/js/navbar/compat.min.js')}"></script>
+<script src="${request.static_url('api:static/angular-seed/app/js/navbar/compat-min.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/js/index/app.js')}"></script>
 </body>
 </html>

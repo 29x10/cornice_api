@@ -1,5 +1,6 @@
 """Main entry point
 """
+import hashlib
 from urllib import quote
 from couchdb.client import Server
 from pyelasticsearch.client import ElasticSearch
@@ -8,6 +9,7 @@ from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.config import Configurator
 from pyramid.events import NewRequest
 from pyramid.security import Allow, Everyone
+from api.auth import MozillaTokenLibAuthenticationPolicy
 from api.mapping.user import groupfinder
 
 
@@ -19,7 +21,6 @@ def add_couchdb_to_request(event):
     event.request.es = settings['ES.server']
     if 'token' in request.params:
         token = request.params.get('token', '')
-        token = quote(token[:-23]) + token[-23:]
         cookie_value = 'auth_tkt = %s' % token
         request.headers['Cookie'] = str(cookie_value)
         request.token = token
@@ -34,7 +35,7 @@ class RootFactory(object):
 
 
 def main(global_config, **settings):
-    auth_token = AuthTktAuthenticationPolicy('what_makes_so_secret', hashalg='sha512', callback=groupfinder)
+    auth_token = MozillaTokenLibAuthenticationPolicy(secret='what_makes_so_secret', hashmod=hashlib.sha256, callback=groupfinder, timeout=86400)
     auth_permission = ACLAuthorizationPolicy()
     config = Configurator(settings=settings,
                           root_factory=RootFactory)

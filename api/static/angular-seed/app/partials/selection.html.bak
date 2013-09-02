@@ -4,24 +4,25 @@
         <div class="alert alert-info add-alert" ng-show="cartItemExist">已添加</div>
     </div>
 </div>
-<div class="row" ng-class="{show_menu: show_menu}">
-    <div class="col-sm-3 sidebar">
-        <div class="bs-sidebar">
+<div class="row">
+    <div class="col-lg-3">
+        <div class="bs-sidebar affix">
             <ul class="nav bs-sidenav">
-                <li class="filterInput">
+                <div style="padding: 0px 10px;">
                     <input type="text" ng-model="bc" class="form-control" placeholder="查询品牌">
-                </li>
-                <li ng-show="bc" class="filtered">过滤结果:</li>
+
+                </div>
+                <p ng-show="bc" style="padding: 0px 20px;">过滤结果:</p>
                 <li ng-class="{active: $state.includes('index.brand') && $stateParams.brand_name == brand.key}"
-                    ng-repeat="brand in brands | filter: {key: bc}">
+                    ng-repeat="brand in brands | filter: {key: bc}"
+                    class="expand">
                     <a href="#/brand/{{brand.key}}">{{brand.key}}</a>
                     <ul class="nav">
                         <li ng-repeat="category in brand.value"><a href="#/brand/{{brand.key}}/category/{{category}}">{{category}}</a></li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </div>
-    <div class="col-sm-9 content" ui-view ng-swipe-right="showMenu()" ng-swipe-left="hideMenu()"></div>
+    <div class="col-lg-9 slide-reveal" ui-view></div>
 </div>

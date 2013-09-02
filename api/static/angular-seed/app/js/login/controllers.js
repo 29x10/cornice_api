@@ -1,44 +1,19 @@
 'use strict';
 
-angular.module('navbar.controllers', ['ngCookies']).
-  controller('NavBar', ['$scope', 'Users', '$cookies', '$rootScope', '$timeout', function($scope, Users, $cookies, $rootScope, $timeout) {
+angular.module('login.controllers', ['ngCookies']).
+    controller('LoginCtrl', ['$scope', '$cookies', '$timeout', 'Login', function ($scope, $cookies, $timeout, Login) {
 
-        $scope.toggleMenu = function () {
-            $rootScope.show_menu = !$rootScope.show_menu;
-        };
-
-        $scope.isNav = true;
-        $scope.signupText = "注册";
         $scope.loginText = "登陆";
-
-
-        $rootScope.login = function () {
-            $scope.loginOpen = true;
-        };
-
-        $rootScope.signup = function () {
-            location.href = '/signup';
-        };
-
-        $scope.opts = {
-            backdropFade: true,
-            dialogFade:true
-        };
-
-        $scope.loginClose = function () {
-            $scope.loginOpen = false;
-        };
 
         $scope.loginSubmit = function () {
             $scope.waitLogin = true;
             $scope.loginText = "登录中...";
-            var user = new Users($scope.login);
+            var user = new Login($scope.login);
             user.$login(function (data) {
                 if (data.token) {
                     $cookies.auth_tkt = data.token;
                     $timeout(function() {
-                        $scope.loginOpen = false;
-                        location.reload();
+                        location.href = '/';
                     }, 10);
                 }
                 else {
@@ -73,19 +48,5 @@ angular.module('navbar.controllers', ['ngCookies']).
             $scope.passError = false;
         };
 
-        $scope.logout = function () {
-            var token = $cookies.auth_tkt;
-            Users.logout({token: token}, function () {
-                $cookies.auth_tkt = "";
-                $timeout(function() {
-                    location.reload();
-                }, 10);
-            }, function () {
-                $cookies.auth_tkt = "";
-                $timeout(function() {
-                    location.reload();
-                }, 10);
-            });
-        };
+    }]);
 
-  }]);

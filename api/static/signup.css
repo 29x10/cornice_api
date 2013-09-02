@@ -1,0 +1,56 @@
+body.signup{
+    background:#eaedf1;
+}
+
+.signup h3 {
+    color: #00B27B;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.signup .box {
+    padding:40px 60px 40px;
+    background:#fff;
+    overflow:hidden
+}
+
+.signup .box .alert {
+    margin-left: -45px;
+    margin-right: -45px;
+    border-radius: 0;
+}
+
+.glyphicon {
+    color: #23B27E;
+}
+
+.intro-list {
+    margin: 20px 0;
+    font-size: 1.2em;
+}
+
+.signup .form-horizontal .btn-primary {
+    float: right;
+    margin-right: -15px;
+}
+
+.signup .form-horizontal .btn-default {
+    float: left;
+    margin-left: -15px;
+}
+
+
+.forget {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.signup-left {
+    padding-left: 40px;
+}
+
+@media screen and (min-width: 768px) {
+    .signup .box {
+        margin-top: 70px;
+    }
+}

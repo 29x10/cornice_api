@@ -1,3 +1,4 @@
+import urllib2
 from pyramid.security import Authenticated, Everyone
 from tokenlib import TokenManager
 
@@ -12,7 +13,7 @@ class MozillaTokenLibAuthenticationPolicy(object):
 
 
     def __init__(self,
-                 secret,
+                 secret="secret",
                  callback=None,
                  timeout=None,
                  hashmod=None,
@@ -29,7 +30,7 @@ class MozillaTokenLibAuthenticationPolicy(object):
 
         if userid is None:
             return None
-        if self._clean_principal(userid):
+        if self._clean_principal(userid) is None:
             return None
         if self.callback is None:
             return None
@@ -42,11 +43,14 @@ class MozillaTokenLibAuthenticationPolicy(object):
 
     def unauthenticated_userid(self, request):
         cookie = request.cookies.get(self.cookie_name)
-        try:
-            data = self.manager.parse_token(cookie)
-        except ValueError:
-            return None
-        return data['userid']
+        if cookie:
+            try:
+                cookie = str(urllib2.unquote(cookie))
+                data = self.manager.parse_token(cookie)
+            except ValueError:
+                return None
+            return data['userid']
+        return None
 
 
     def effective_principals(self, request):
@@ -56,7 +60,7 @@ class MozillaTokenLibAuthenticationPolicy(object):
 
         if userid is None:
             return effective_principals
-        if self._clean_principal(userid):
+        if self._clean_principal(userid) is None:
             return effective_principals
         if self.callback is None:
             groups = []
@@ -79,4 +83,4 @@ class MozillaTokenLibAuthenticationPolicy(object):
 
 
     def forget(self, request):
-        pass
+        return {}

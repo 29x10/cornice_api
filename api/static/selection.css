@@ -1,0 +1,137 @@
+@media screen and (max-width: 768px) {
+    .sidebar {
+        min-height: 0;
+        position: fixed;
+        padding: 0;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #a8d8b9;
+        z-index: 999;
+        overflow: auto;
+        display: none;
+        width: 70%;
+    }
+
+    .row.show_menu {
+        overflow-x: hidden;
+    }
+
+    .show_menu .sidebar {
+        display: block;
+    }
+
+    .show_menu .content {
+        margin-left: 70%;
+        width: 100%;
+    }
+
+    .show_menu.navbar {
+        margin-left: 70%;
+        width: 100%;
+    }
+}
+
+.bs-sidebar input[type=text] {
+    border-color: #227d51;
+}
+
+
+.add-alert {
+    left: 0;
+    top: 50px;
+    width: 100%;
+    position: fixed;
+    z-index: 2000;
+    text-align: center;
+    margin: 0;
+}
+
+.alert-success {
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-info {
+    color: #3a87ad;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+/*
+ * Side navigation
+ *
+ * Scrollspy and affixed enhanced navigation to highlight sections and secondary
+ * sections of docs content.
+ */
+
+/* By default it's not affixed in mobile views, so undo that */
+.bs-sidebar {
+    position: static;
+}
+
+.bs-sidebar .nav > .active > ul {
+    display: block;
+}
+
+/* First level of nav */
+.bs-sidenav {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-top:    10px;
+    padding-bottom: 10px;
+    border-radius: 0;
+    background-color: #a8d8b9;
+}
+
+/* All levels of nav */
+.bs-sidebar .nav > li > a {
+    display: block;
+    color: #227d51;
+    padding: 5px 20px;
+}
+
+.bs-sidenav .filtered {
+    padding: 5px 20px;
+}
+
+.bs-sidenav .filterInput {
+    padding: 0 10px;
+}
+
+.bs-sidebar .nav > li > a:hover,
+.bs-sidebar .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #5dac81;
+    border-right: 1px solid #5dac81;
+}
+.bs-sidebar .nav > .active > a,
+.bs-sidebar .nav > .active:hover > a,
+.bs-sidebar .nav > .active:focus > a {
+    font-weight: bold;
+    color: #0f4c3a;
+    background-color: transparent;
+    border-right: 2px solid #0f4c3a;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    margin-bottom: 8px;
+}
+.bs-sidebar .nav .nav > li > a {
+    padding-top:    3px;
+    padding-bottom: 3px;
+    padding-left: 30px;
+    font-size: 90%;
+}
+
+
+@media screen and (max-width: 768px) {
+    .bs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+

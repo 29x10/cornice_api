@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('select', ['navbar','ui.compat', 'select.services', 'select.controllers']).
+angular.module('select', ['navbar','ui.router.compat', 'select.services', 'select.controllers', 'ngAnimate', 'ngTouch']).
     config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.when('', '/').otherwise('/');
         $stateProvider

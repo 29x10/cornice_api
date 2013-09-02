@@ -17,7 +17,7 @@
     <script src="${request.static_url('api:static/respond.min.js')}"></script>
     <![endif]-->
 </head>
-<body class="login">
+<body class="login" ng-controller="LoginCtrl">
 <div class="container">
     <div class="row">
         <div class="col-sm-5 col-sm-offset-1 login-left">
@@ -42,12 +42,13 @@
                     <input class="form-control" type="text" id="loginUser" name="loginUser" placeholder="用户名" autocomplete="off"
                            ng-model="login.user"
                            ng-click="rmNUE()"
-                           ng-focus="loginUserF"
-                           ng-minlength="6" ng-maxlength="30"
-                           ng-pattern="/^[A-Za-z][\w.-]*$/"
+                           ng-focus="loginUserF=true"
+                           ng-blur="loginUserF=false"
+                           ng-minlength="2" ng-maxlength="30"
+                           ng-pattern="/^[A-Za-z0-9\u4e00-\u9fa5][\u4e00-\u9fa5\w.-@]*$/"
                            required>
-                    <div class="alert alert-warning" ng-show="loginUserF && loginForm.loginUser.$error.minlength">
-                        用户名不能少于6个字符
+                    <div class="alert" ng-show="loginUserF && loginForm.loginUser.$error.minlength">
+                        用户名不能少于2个字符
                     </div>
                     <div class="alert" ng-show="loginUserF && loginForm.loginUser.$error.maxlength">
                         用户名不能多于30个字符
@@ -56,7 +57,7 @@
                         用户名不能为空
                     </div>
                     <div class="alert" ng-show="loginUserF && loginForm.loginUser.$error.pattern">
-                        用户名只能以英文字母开头，其余为英文、数字、点、减号或者下划线
+                        用户名只能以中英文数字开头，其余为中英文、数字、点、减号、@或者下划线
                     </div>
                     <div class="alert" ng-show="userNExist">
                         用户不存在
@@ -66,7 +67,8 @@
                     <label class="control-label" for="loginPsd">密码:</label>
                     <input class="form-control" type="password" id="loginPsd" name="loginPsd" placeholder="密码" autocomplete="off"
                            ng-model="login.password"
-                           ng-focus="loginPsdF"
+                           ng-focus="loginPsdF=true"
+                           ng-blur="loginPsdF=false"
                            ng-click="rmPasError()"
                            ng-minlength="6" ng-maxlength="30"
                            ng-pattern="/^[\w\-\~\`\!\@\#\$\%\^\&\*\(\)\+\=\\\{\}\[\]\|\;\:\'\&quot;\,\.\/\<\>\?]+$/"
@@ -92,18 +94,18 @@
                     <a href="/signup">点击注册</a>
                 </div>
                 <a href="/" type="button" class="btn btn-default">返回首页</a>
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> 登陆</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="waitLogin || !(loginForm.$valid)" ng-click="loginSubmit()">
+                    <span class="glyphicon glyphicon-log-in"></span> {{ loginText }}
+                </button>
             </form>
         </div>
     </div>
 </div>
-<script src="${request.static_url('api:static/angular-seed/app/lib/angular/angular.min.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/lib/angular/angular-resource.min.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/lib/angular/angular-cookies.min.js')}"></script>
-<script src="${request.static_url('api:static/angular-bootstrap/ui-bootstrap-tpls-0.5.0-SNAPSHOT.min.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/lib/custom-ng-focus.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/js/navbar/compat.min.js')}"></script>
-<script src="${request.static_url('api:static/angular-seed/app/lib/custom-ng-focus.js')}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-resource.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-cookies.min.js"></script>
+<script src="${request.static_url('api:static/angular-seed/app/js/login/controllers.js')}"></script>
+<script src="${request.static_url('api:static/angular-seed/app/js/login/services.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/js/login/app.js')}"></script>
 </body>
 </html>

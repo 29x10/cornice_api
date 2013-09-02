@@ -8,11 +8,11 @@ from pyramid.security import remember, authenticated_userid, Allow
 from webob import exc
 from webob.response import Response
 from api.mapping.product import Product
-from api.mapping.user import User, manager
+from api.mapping.user import User, manager, groupfinder
 from couchdb.json import encode as couchdb_json_encode
 
 
-VALID_USERNAME = re.compile(r"^[A-Za-z][\w.-]{5,29}$")
+VALID_USERNAME = re.compile(ur"^[A-Za-z0-9\u4e00-\u9fa5][\u4e00-\u9fa5\w.-@]{1,29}$")
 VALID_PASSWORD = re.compile(r"^[\w\-\~\`\!\@\#\$\%\^\&\*\(\)\+\=\\\{\}\[\]\|\;\:\'\,\.\/\<\>\?\"]{6,30}$")
 
 
@@ -21,6 +21,7 @@ def _check_acl(request):
     return [(Allow, 'admin', 'add')]
 
 users = Service(name='users', path='/users', description="user management", cors_origins=('*',))
+user_groups = Service(name='users_groups', path='/users/{user_id}', description="get user's groups based on user_id", cors_origins=('*',))
 products = Service(name='products', path='/products', description="product management", cors_origins=('*',), acl=_check_acl)
 brands = Service(name='brands', path='/brands', description="get all brand and their categories", cors_origins=('*',))
 brand_desc = Service(name="brand_desc", path='/brand/desc', description='get the desc for the spec brand', cors_origins=('*',))
@@ -76,7 +77,7 @@ def create_validate(request):
         password = request.json_body['password']
         password_confirm = request.json_body['passwordConfirm']
         if not VALID_USERNAME.match(username):
-            request.errors.add('signup', 'username_invalid', u'用户名只能以英文字母开头，其余为英文、数字、点、减号和下划线，长度为6到30个字符')
+            request.errors.add('signup', 'username_invalid', u'用户名只能以中英文数字开头，其余为中英文、数字、点、减号、@和下划线，长度为2到30个字符')
         elif not VALID_PASSWORD.match(password):
             request.errors.add('signup', 'password_invalid', u'密码包含非法字符，长度为6到30个字符')
         elif not VALID_PASSWORD.match(password_confirm):
@@ -116,8 +117,7 @@ def login_validate(request):
             if len(user):
                 hashed_password = user.rows[0].value['password']
                 if manager.check(hashed_password, password):
-                    headers = remember(request, username)
-                    cookie_value = headers[0][1].split(';')[0][:-1][10:]
+                    cookie_value = remember(request, username)
                     user_id = user.rows[0].id
                     user = db[user_id]
                     user['token'] = cookie_value
@@ -140,8 +140,7 @@ def login_validate(request):
 @users.put(validators=create_validate)
 def create_user(request):
     user = request.validated['user']
-    headers = remember(request, user.username)
-    cookie_value = headers[0][1].split(';')[0][:-1][10:]
+    cookie_value = remember(request, user.username)
     user.token = cookie_value
 
     db = request.db
@@ -164,6 +163,23 @@ def logout(request):
     del user['token']
     db[user['_id']] = user
     return {'username': user['username']}
+
+
+
+@user_groups.get()
+def get_user_groups(request):
+    user_id = request.matchdict.get('user_id', '')
+    groups = []
+    if user_id:
+        db = request.db
+        result = db.view('_design/user/_view/by_user', key=user_id)
+        if len(result):
+            groups = result.rows[0].value.get('groups', None)
+            if not groups:
+                groups = []
+    return dict(groups=groups)
+
+
 
 #
 # product
