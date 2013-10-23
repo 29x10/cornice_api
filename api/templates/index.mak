@@ -25,8 +25,8 @@ ${comp.navbar()}
     <div class="container">
         <h1>立仁泰华</h1>
         <p>我们致力于为客户提供优质电气产品以及服务</p>
-        <a class="btn btn-primary">关于我们</a>
-        <div>您可以先看下我们的<a href="/accounts/sign">选型手册</a></div>
+        <a class="btn btn-primary" ng-click="login()">关于我们</a>
+        <div>您可以先看下我们的<a href="/selection">选型手册</a></div>
     </div>
 </header>
 <section class="intro">
@@ -106,7 +106,7 @@ ${comp.navbar()}
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-resource.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-cookies.min.js"></script>
-<script src="${request.static_url('api:static/angular-bootstrap/ui-bootstrap-tpls-0.5.0-SNAPSHOT.min.js')}"></script>
+<script src="${request.static_url('api:static/angular-bootstrap/ui-bootstrap-tpls-0.6.0-SNAPSHOT.min.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/js/navbar/compat-min.js')}"></script>
 <script src="${request.static_url('api:static/angular-seed/app/js/index/app.js')}"></script>
 </body>

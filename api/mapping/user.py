@@ -1,20 +1,19 @@
 from couchdb.design import ViewDefinition
-from couchdb.mapping import Document, TextField, ViewField, ListField
+from couchdb.mapping import Document, TextField, ListField
 from cryptacular.bcrypt import BCRYPTPasswordManager
+import requests
 
 
 manager = BCRYPTPasswordManager()
 
 
 def groupfinder(user_id, request):
-    db = request.db
-    result = db.view('_design/user/_view/by_user', key=user_id)
-    groups = None
-    if len(result):
-        groups = result.rows[0].value.get('groups', None)
-        if not groups:
-            groups = None
-    return groups
+    url = 'http://localhost:5001/users/' + user_id
+    r = requests.get(url)
+    groups = r.json()['groups']
+    if groups:
+        return groups
+    return None
 
 
 class User(Document):

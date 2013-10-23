@@ -4,18 +4,10 @@
 
 
 angular.module('select.controllers', [])
-    .controller('BrandsCtrl', ['$scope', 'Brands', '$rootScope', function ($scope, Brands, $rootScope) {
+    .controller('BrandsCtrl', ['$scope', 'Brands', function ($scope, Brands) {
         Brands.query(function (data) {
             $scope.brands = data.rows;
         });
-
-        $rootScope.showMenu = function () {
-            $rootScope.show_menu = true;
-        };
-
-        $rootScope.hideMenu = function () {
-            $rootScope.show_menu = false;
-        };
     }])
     .controller('DescCtrl', ['$scope', '$stateParams', 'Desc', function ($scope, $stateParams, Desc) {
         Desc.query({name: $stateParams.brand_name}, function (data) {

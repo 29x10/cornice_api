@@ -1,5 +1,5 @@
 from couchdb.design import ViewDefinition
-from couchdb.mapping import Document, TextField, ListField
+from couchdb.mapping import Document, TextField, ListField, IntegerField
 
 
 class Product(Document):
@@ -8,6 +8,7 @@ class Product(Document):
     brand = TextField()
     category = TextField()
     cover = TextField()
+    price = IntegerField()
     images = ListField(TextField)
 
 
@@ -31,15 +32,18 @@ class Product(Document):
     product_list = ViewDefinition('product', 'product_list', '''
         function(doc) {
             if (doc.db_type == 'product') {
-                emit([doc.brand, doc.category], doc);
+                emit([doc.brand, doc.category],
+                    doc
+                );
             }
         }''')
 
 
-    def __init__(self, spec, brand, category, cover, images):
+    def __init__(self, spec, brand, category, cover, price, images):
         super(Product, self).__init__()
         self.spec = spec
         self.brand = brand
         self.category = category
         self.cover = cover
+        self.price = price
         self.images = images

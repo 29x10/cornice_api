@@ -1,8 +1,10 @@
 #coding:utf-8
 """ Cornice services.
 """
+from cgi import FieldStorage
 import json
 import re
+from uuid import uuid4
 from cornice import Service
 from pyramid.security import remember, authenticated_userid, Allow
 from webob import exc
@@ -15,16 +17,25 @@ from couchdb.json import encode as couchdb_json_encode
 VALID_USERNAME = re.compile(ur"^[A-Za-z0-9\u4e00-\u9fa5][\u4e00-\u9fa5\w.-@]{1,29}$")
 VALID_PASSWORD = re.compile(r"^[\w\-\~\`\!\@\#\$\%\^\&\*\(\)\+\=\\\{\}\[\]\|\;\:\'\,\.\/\<\>\?\"]{6,30}$")
 
-
-
 def _check_acl(request):
-    return [(Allow, 'admin', 'add')]
+    return [
+        (Allow, 'admin', 'add'),
+        (Allow, 'admin', 'view')
+    ]
+
 
 users = Service(name='users', path='/users', description="user management", cors_origins=('*',))
 user_groups = Service(name='users_groups', path='/users/{user_id}', description="get user's groups based on user_id", cors_origins=('*',))
-products = Service(name='products', path='/products', description="product management", cors_origins=('*',), acl=_check_acl)
+user = Service(name='user', path='/user', description='user info', cors_origins=('*',))
+
+
+product_all = Service(name='product_all', path='/products', description="all product for display", cors_origins=('*',))
+product_brand = Service(name='product_brand', path='/products/{brand}', description="spec brand for display", cors_origins=('*',))
+product_category = Service(name='product_category', path='/products/{brand}/{category}', description="spec category for display", cors_origins=('*',))
+
+product_all_with_price = Service(name='product_all_with_price', path='/product', description="product for admin", cors_origins=('*',), acl=_check_acl)
+
 brands = Service(name='brands', path='/brands', description="get all brand and their categories", cors_origins=('*',))
-brand_desc = Service(name="brand_desc", path='/brand/desc', description='get the desc for the spec brand', cors_origins=('*',))
 
 
 #
@@ -77,18 +88,18 @@ def create_validate(request):
         password = request.json_body['password']
         password_confirm = request.json_body['passwordConfirm']
         if not VALID_USERNAME.match(username):
-            request.errors.add('signup', 'username_invalid', u'用户名只能以中英文数字开头，其余为中英文、数字、点、减号、@和下划线，长度为2到30个字符')
+            request.errors.add('body', 'username_invalid', u'用户名只能以中英文数字开头，其余为中英文、数字、点、减号、@和下划线，长度为2到30个字符')
         elif not VALID_PASSWORD.match(password):
-            request.errors.add('signup', 'password_invalid', u'密码包含非法字符，长度为6到30个字符')
+            request.errors.add('body', 'password_invalid', u'密码包含非法字符，长度为6到30个字符')
         elif not VALID_PASSWORD.match(password_confirm):
-            request.errors.add('signup', 'password_confirm_invalid', u'密码包含非法字符，长度为6到30个字符')
+            request.errors.add('body', 'password_confirm_invalid', u'密码包含非法字符，长度为6到30个字符')
         elif password != password_confirm:
-            request.errors.add('signup', 'password_mismatch', u'两次密码不一致')
+            request.errors.add('body', 'password_mismatch', u'两次密码不一致')
         else:
             db = request.db
             result = db.view('_design/user/_view/by_user', key=username)
             if len(result):
-                request.errors.add('signup', 'username_exist', u'用户名已经存在')
+                request.errors.add('body', 'username_exist', u'用户名已经存在')
             else:
                 user = User(username=username, password=password)
                 request.validated['user'] = user
@@ -96,11 +107,11 @@ def create_validate(request):
         raise _400()
     except KeyError as e:
         if e.message == 'user':
-            request.errors.add('signup', 'username_none', u'用户名不能为空')
+            request.errors.add('body', 'username_none', u'用户名不能为空')
         elif e.message == 'password':
-            request.errors.add('signup', 'password_none', u'密码不能为空')
+            request.errors.add('body', 'password_none', u'密码不能为空')
         elif e.message == 'passwordConfirm':
-            request.errors.add('signup', 'password_confirm_none', u'确认密码不能为空')
+            request.errors.add('body', 'password_confirm_none', u'确认密码不能为空')
 
 
 def login_validate(request):
@@ -108,9 +119,9 @@ def login_validate(request):
         username = request.json_body['user']
         password = request.json_body['password']
         if not VALID_USERNAME.match(username):
-            request.errors.add('login', 'username_invalid', u'用户名不合法')
+            request.errors.add('body', 'username_invalid', u'用户名不合法')
         elif not VALID_PASSWORD.match(password):
-            request.errors.add('login', 'password_invalid', u'密码包含非法字符')
+            request.errors.add('body', 'password_invalid', u'密码包含非法字符')
         else:
             db = request.db
             user = db.view('_design/user/_view/by_user', key=username)
@@ -124,17 +135,16 @@ def login_validate(request):
                     db[user_id] = user
                     request.validated['user'] = user
                 else:
-                    request.errors.add('login', 'password_error', u'密码不正确')
+                    request.errors.add('body', 'password_error', u'密码不正确')
             else:
-                request.errors.add('login', 'username_not_exist', u'用户不存在')
+                request.errors.add('body', 'username_not_exist', u'用户不存在')
     except ValueError:
         raise _400()
     except KeyError as e:
         if e.message == 'user':
-            request.errors.add('login', 'username_none', u'用户名不能为空')
+            request.errors.add('body', 'username_none', u'用户名不能为空')
         elif e.message == 'password':
-            request.errors.add('login', 'password_none', u'密码不能为空')
-
+            request.errors.add('body', 'password_none', u'密码不能为空')
 
 
 @users.put(validators=create_validate)
@@ -145,14 +155,15 @@ def create_user(request):
 
     db = request.db
     user.store(db)
-    return {'token': cookie_value}
+    return {'token': cookie_value, 'username': user['username']}
 
 
 @users.post(validators=login_validate)
 def login(request):
     user = request.validated['user']
     cookie_value = user['token']
-    return {'token': cookie_value}
+    username = user['username']
+    return {'token': cookie_value, 'username': username}
 
 
 @users.get(validators=valid_token)
@@ -165,10 +176,15 @@ def logout(request):
     return {'username': user['username']}
 
 
+@user.get(validators=valid_token)
+def user_info(request):
+    user = request.validated['user']
+    return {'username': user['username']}
+
 
 @user_groups.get()
 def get_user_groups(request):
-    user_id = request.matchdict.get('user_id', '')
+    user_id = request.matchdict['user_id']
     groups = []
     if user_id:
         db = request.db
@@ -180,86 +196,94 @@ def get_user_groups(request):
     return dict(groups=groups)
 
 
-
 #
 # product
 #
 
 
 def validate_product(request):
+    images = []
+    cover = ''
+    up = request.up
     try:
-        brand = request.json_body['brand']
-        spec = request.json_body['spec']
-        category = request.json_body['category']
-        cover = request.json_body['cover']
-        images = []
-        image_list = request.json_body['images']
-        if not isinstance(image_list, list):
-            raise _400()
-        if not image_list:
-            request.errors.add('products', 'images_none', u'照片不能为空')
-        for image in image_list:
-            if not isinstance(image, dict):
-                raise _400()
-            images.append(image['url'])
-        new_product = Product(spec=spec, brand=brand, category=category, cover=cover, images=images)
+        brand = request.params.get('brand', 'undefined')
+        if brand == 'undefined':
+            request.errors.add('body', 'brand_none', u'品牌不能为空')
+        spec = request.params.get('spec', 'undefined')
+        if spec == 'undefined':
+            request.errors.add('body', 'spec_none', u'型号不能为空')
+        category = request.params.get('category', 'undefined')
+        if category == 'undefined':
+            request.errors.add('body', 'category_none', u'所属目录不能为空')
+        price = request.params.get('price', 'undefined')
+        if price == 'undefined':
+            request.errors.add('body', 'price_none', u'面价不能为空')
+        price = int(price)
+        for file_type, file_wrapper in request.params.items():
+            if isinstance(file_wrapper, FieldStorage):
+                file_ext = '.' + file_wrapper.type.split('/')[-1]
+                image_url = '/li-electric/product/' + uuid4().hex + file_ext
+                if 'image' in file_type:
+                    up.put(image_url, file_wrapper.file, checksum=True)
+                    images.append('http://lirentaihua.b0.upaiyun.com' + image_url)
+                elif 'cover' in file_type:
+                    up.put(image_url, file_wrapper.file, checksum=True)
+                    cover = 'http://lirentaihua.b0.upaiyun.com' + image_url
+        if not images:
+            request.errors.add('body', 'images_none', u'产品图片不能为空')
+        if not cover:
+            request.errors.add('body', 'cover_none', u'封面照片不能为空')
+        new_product = Product(spec=spec, brand=brand, category=category, cover=cover, price=price, images=images)
         request.validated['product'] = new_product
-    except ValueError:
-        raise _400()
-    except KeyError as e:
-        if e.message == 'spec':
-            request.errors.add('products', 'spec_none', u'型号规格不能为空')
-        elif e.message == 'brand':
-            request.errors.add('products', 'brand_none', u'品牌不能为空')
-        elif e.message == 'category':
-            request.errors.add('products', 'category_none', u'分类不能为空')
-        elif e.message == 'cover':
-            request.errors.add('products', 'cover_none', u'封面照片不能为空')
-        elif e.message == 'images':
-            request.errors.add('products', 'images_none', u'照片不能为空')
-        elif e.message == 'url':
-            request.errors.add('products', 'image_none', u'每个添加的照片都不能为空')
+    except ValueError as error:
+        if 'int' in error.message:
+            request.errors.add('body', 'price_not_number', u'面价必须为数字')
+    except Exception:
+        pass
 
 
+@product_all.get()
+def all_product(request):
+    db = request.db
+    return db.resource('_design', 'product', '_view', '_all_product').get_json()[2]
 
-@products.get()
-def get_product(request):
-    try:
-        brand = request.params['brand']
-        category = request.params['category']
-    except KeyError as e:
-        if e.message == 'category':
-            db = request.db
-            startkey = couchdb_json_encode([brand, ])
-            endkey = couchdb_json_encode([brand, {}])
-            return db.resource('_design', 'product', '_view', 'product_list').get_json(startkey=startkey, endkey=endkey)[2]
-        else:
-            raise _400()
-    # es = request.es
-    # query = {
-    #     'query': {
-    #         'match': {
-    #             'brand': {
-    #                 'query': brand,
-    #                 'type': 'phrase'
-    #             }
-    #         }
-    #     }
-    # }
-    # result = es.search(query, index='test', doc_type='product')
-    # return result['hits']
+
+@product_brand.get()
+def product_on_brand(request):
+    brand = request.matchdict['brand']
+    db = request.db
+    startkey = couchdb_json_encode([brand, ])
+    endkey = couchdb_json_encode([brand, {}])
+    return db.resource('_design', 'product', '_view', 'product_list').get_json(startkey=startkey, endkey=endkey)[2]
+
+
+@product_category.get()
+def product_on_category(request):
+    brand = request.matchdict['brand']
+    category = request.matchdict['category']
     db = request.db
     key = couchdb_json_encode([brand, category])
     return db.resource('_design', 'product', '_view', 'product_list').get_json(key=key)[2]
 
 
+@product_all_with_price.get(validators=valid_token, permission="view")
+def product_with_price(request):
+    db = request.db
+    try:
+        id = request.params['id']
+        product = db[id].items()
+        return {'product': product}
+    except KeyError as e:
+        if e.message == 'id':
+            return db.resource('_design', 'product', '_view', 'product_list').get_json()[2]
 
-@products.post(validators=(valid_token, validate_product), permission='add')
+
+@product_all_with_price.post(validators=(valid_token, validate_product), permission='add')
 def add_product(request):
     new_product = request.validated['product']
     db = request.db
     new_product.store(db)
-    return {'success': 123}
+    return {'success': 'true'}
 
 
 @brands.get()
@@ -271,14 +295,3 @@ def get_brands(request):
         name = request.params['name']
         name = couchdb_json_encode(name)
         return db.resource('_design', 'product', '_view', 'brand_list').get_json(group=u'true', key=name)[2]
-
-
-@brand_desc.get()
-def get_brand_desc(request):
-    try:
-        name = request.params['name']
-    except KeyError:
-        raise _400()
-    db = request.db
-    result = db.resource('_design', 'brand_desc', '_view', 'by_name').get_json(key=couchdb_json_encode(name))[2]
-    return result

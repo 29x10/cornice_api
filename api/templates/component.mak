@@ -1,5 +1,5 @@
 <%def name="navbar()">
-    <div class="header" ng-controller="NavBar">
+    <div class="header" ng-controller="NavBar" ng-init="navbarInit()">
         <div class="navbar navbar-fixed-top navbar-default">
             <div class="container">
                 <div class="navbar-header">
@@ -21,28 +21,13 @@
                         <li ${'class=active' if request.path == '/selection' else ''}><a href="/selection">产品选型</a></li>
                         <li ${'class=active' if request.path == '/checkout' else ''}><a href="/checkout">结算</a></li>
                         <li class="sep"></li>
-                        %if user_login:
-                                <li><a href="#">${user_login}</a></li>
-                                <li><a href ng-click="logout()">登出</a>
-                                </li>
-                        %else:
-                                <li><a href="/login">登陆</a></li>
-                                <li class="btn-navbar"><button class="btn btn-default signup-btn navbar-btn" ng-click="signup()">注册</button></li>
-                        %endif
+                        <li ng-if="userLogin"><a href="#" ng-bind="userLogin"></a></li>
+                        <li ng-if="userLogin"><a href ng-click="logout()">登出</a></li>
+                        <li ng-if="!userLogin"><a href="/login">登陆</a></li>
+                        <li ng-if="!userLogin" class="btn-navbar"><button class="btn btn-default signup-btn navbar-btn" ng-click="signup()">注册</button></li>
                     </ul>
-
-
-
                 </div>
             </div>
-        </div>
-
-        <div modal="loginOpen" options="opts" close="loginClose()">
-            <div class="modal-dialog" ng-include="'/static/angular-seed/app/partials/login.html'"></div>
-        </div>
-
-        <div modal="signupOpen" options="opts" close="signupClose()">
-            <div class="modal-dialog" ng-include="'/static/angular-seed/app/partials/signup.html'"></div>
         </div>
     </div>
 </%def>
@@ -74,28 +59,13 @@
                         <li ${'class=active' if request.path == '/selection' else ''}><a href="/selection">产品选型</a></li>
                         <li ${'class=active' if request.path == '/checkout' else ''}><a href="/checkout">结算</a></li>
                         <li class="sep"></li>
-                        %if user_login:
-                                <li><a href="#">${user_login}</a></li>
-                                <li><a href ng-click="logout()">登出</a>
-                                </li>
-                        %else:
-                                <li><a href="/login">登陆</a></li>
-                                <li class="btn-navbar"><button class="btn btn-default signup-btn navbar-btn" ng-click="signup()">注册</button></li>
-                        %endif
+                        <li ng-if="userLogin"><a href="#" ng-bind="userLogin"></a></li>
+                        <li ng-if="userLogin"><a href ng-click="logout()">登出</a></li>
+                        <li ng-if="!userLogin"><a href="/login">登陆</a></li>
+                        <li ng-if="!userLogin" class="btn-navbar"><button class="btn btn-default signup-btn navbar-btn" ng-click="signup()">注册</button></li>
                     </ul>
-
-
-
                 </div>
             </div>
-        </div>
-
-        <div modal="loginOpen" options="opts" close="loginClose()">
-            <div class="modal-dialog" ng-include="'/static/angular-seed/app/partials/login.html'"></div>
-        </div>
-
-        <div modal="signupOpen" options="opts" close="signupClose()">
-            <div class="modal-dialog" ng-include="'/static/angular-seed/app/partials/signup.html'"></div>
         </div>
     </div>
 </%def>

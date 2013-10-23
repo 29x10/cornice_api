@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('login.controllers', ['ngCookies']).
-    controller('LoginCtrl', ['$scope', '$cookies', '$timeout', 'Login', function ($scope, $cookies, $timeout, Login) {
+    controller('LoginCtrl', ['$scope', '$cookies', 'Login', function ($scope, $cookies, Login) {
 
         $scope.loginText = "登陆";
 
@@ -12,9 +12,7 @@ angular.module('login.controllers', ['ngCookies']).
             user.$login(function (data) {
                 if (data.token) {
                     $cookies.auth_tkt = data.token;
-                    $timeout(function() {
-                        location.href = '/';
-                    }, 10);
+                    location.href = '/';
                 }
                 else {
                     $scope.waitLogin = false;
